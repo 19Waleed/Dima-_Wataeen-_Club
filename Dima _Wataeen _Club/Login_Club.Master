@@ -1,0 +1,167 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Login_Club.Master.cs" Inherits="Dima__Wataeen__Club.Login_Club" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style1 {
+            width: 1468px;
+            border-collapse: collapse;
+            border-color: #FFFFFF;
+            height: 36px;
+        }
+        .auto-style4 {
+            vertical-align: top;
+            margin-top: 0px;
+            background-color: #B0A494;
+        }
+        .auto-style5 {
+            text-align: left;
+            margin-top:0px;
+            width: 1482px;
+        }
+        
+      
+    .auto-style4 {
+        vertical-align: top;
+    }
+
+html [type=button] {
+  -webkit-appearance: button;
+}
+
+.btn-info {
+  color: #fff;
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+}
+
+  .btn {
+    transition: none;
+  }
+
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+button {
+  -webkit-appearance: button;
+}
+
+button {
+  text-transform: none;
+}
+
+button {
+  overflow: visible;
+    font-weight: 700;
+}
+
+button {
+  font-family: inherit;
+  /*font-size: inherit;*/
+  line-height: inherit;
+    margin-left: 0;
+    margin-right: 0px;
+    }
+
+button {
+  border-radius: 0;
+}
+
+  * {
+    text-shadow: none !important;
+    box-shadow: none !important;
+  }
+  
+
+* {
+  box-sizing: border-box;
+}
+
+        .auto-style8 {
+            vertical-align: top;
+            width: 38px;
+            text-align: center;
+            margin-top: 0px;
+            background-color: #B6AA99;
+        }
+        .auto-style10 {
+            vertical-align: top;
+            width: 1435px;
+            margin-top: 0px;
+            background-color: #FFFFFF;
+        }
+
+        .auto-style11 {
+            right: -26px;
+            top: 0px;
+            width: 100%;
+            height: 234px;
+            text-align: center;
+        }
+
+        .auto-style12 {
+            width: 1499px;
+        }
+
+    </style>
+</head>
+<body style="background-color:#bdb09f;margin-top:0px;margin-left:0px;margin-right:0px; height: 196px; width: 1493px;">
+    <form id="form1" runat="server" class="auto-style12">
+
+        <div class="auto-style11" id="bar">
+                          
+
+
+        <asp:Image ID="Image1" runat="server" ImageUrl="~/img/club_Heder11.png" Width="1481px" />
+             
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;
+             
+            </div>
+  
+
+        <strong>
+                                <br />
+                                </strong>
+        <table align="left" class="auto-style1" dir="ltr">
+            <tr>
+                <td aria-sort="none" class="auto-style8" onload="positionElementAtTop()" >
+                    &nbsp;</td>
+                <td aria-sort="none" class="auto-style10" onload="positionElementAtTop()" >
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        <div class="auto-style5">
+                        </div>
+                    </asp:ContentPlaceHolder>
+                </td>
+                <td aria-sort="none" class="auto-style4" onload="positionElementAtTop()" >
+                    &nbsp;</td>
+            </tr>
+        </table>
+    </form>
+
+</body>
+</html>

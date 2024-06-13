@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="15cb12bf93d0468c951a841b1085c27d" Name="Diagram1">
+        <EntityTypeShape EntityType="Dima__Wataeen__Club.Table_Booking_Details" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Dima__Wataeen__Club.Table_Contests" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Dima__Wataeen__Club.Table_Expenses" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Dima__Wataeen__Club.Table_Master_Member" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Dima__Wataeen__Club.Table_Member_Details" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Dima__Wataeen__Club.Table_Teams" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Dima__Wataeen__Club.Table_User_Pages" Width="2.375" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Dima__Wataeen__Club.Table_User_Profile" Width="2.25" PointX="6.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Dima__Wataeen__Club.Table_User_Teams" Width="2.125" PointX="4.5" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="Dima__Wataeen__Club.Table_History_Contests" Width="2.375" PointX="7.125" PointY="7.25" IsExpanded="true" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
