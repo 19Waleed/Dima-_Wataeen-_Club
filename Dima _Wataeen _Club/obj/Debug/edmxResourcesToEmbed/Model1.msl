@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Club_DatabaseModelStoreContainer" CdmEntityContainer="Club_DatabaseEntities1">
+    <EntitySetMapping Name="Table_Booking_Details">
+      <EntityTypeMapping TypeName="Club_DatabaseModel.Table_Booking_Details">
+        <MappingFragment StoreEntitySet="Table_Booking_Details">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Teams_ID" ColumnName="Teams_ID" />
+          <ScalarProperty Name="Teams_NAME" ColumnName="Teams_NAME" />
+          <ScalarProperty Name="Full_Name" ColumnName="Full_Name" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Booking_Date" ColumnName="Booking_Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_Contests">
+      <EntityTypeMapping TypeName="Club_DatabaseModel.Table_Contests">
+        <MappingFragment StoreEntitySet="Table_Contests">
+          <ScalarProperty Name="Contests_ID" ColumnName="Contests_ID" />
+          <ScalarProperty Name="Name_Contests" ColumnName="Name_Contests" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_Expenses">
+      <EntityTypeMapping TypeName="Club_DatabaseModel.Table_Expenses">
+        <MappingFragment StoreEntitySet="Table_Expenses">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Date_Exchange" ColumnName="Date_Exchange" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Approval_Date" ColumnName="Approval_Date" />
+          <ScalarProperty Name="Who_Approved_ID" ColumnName="Who_Approved_ID" />
+          <ScalarProperty Name="Approval" ColumnName="Approval" />
+          <ScalarProperty Name="Bill_PicUrl" ColumnName="Bill_PicUrl" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_Master_Member">
+      <EntityTypeMapping TypeName="Club_DatabaseModel.Table_Master_Member">
+        <MappingFragment StoreEntitySet="Table_Master_Member">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Member_ID" ColumnName="Member_ID" />
+          <ScalarProperty Name="Full_Name" ColumnName="Full_Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Marital_Status" ColumnName="Marital_Status" />
+          <ScalarProperty Name="Date_Birth" ColumnName="Date_Birth" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="PicUrl" ColumnName="PicUrl" />
+          <ScalarProperty Name="Team_ID" ColumnName="Team_ID" />
+          <ScalarProperty Name="Member_Type" ColumnName="Member_Type" />
+          <ScalarProperty Name="Card_ID_ON" ColumnName="Card_ID_ON" />
+          <ScalarProperty Name="Team_Name" ColumnName="Team_Name" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="Joining_Date" ColumnName="Joining_Date" />
+          <ScalarProperty Name="Payment_Required" ColumnName="Payment_Required" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_Member_Details">
+      <EntityTypeMapping TypeName="Club_DatabaseModel.Table_Member_Details">
+        <MappingFragment StoreEntitySet="Table_Member_Details">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Member_ID" ColumnName="Member_ID" />
+          <ScalarProperty Name="Details" ColumnName="Details" />
+          <ScalarProperty Name="Datefrom" ColumnName="Datefrom" />
+          <ScalarProperty Name="Dateto" ColumnName="Dateto" />
+          <ScalarProperty Name="PicUrl" ColumnName="PicUrl" />
+          <ScalarProperty Name="Member_Type" ColumnName="Member_Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_Teams">
+      <EntityTypeMapping TypeName="Club_DatabaseModel.Table_Teams">
+        <MappingFragment StoreEntitySet="Table_Teams">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Team_ID" ColumnName="Team_ID" />
+          <ScalarProperty Name="Team_NAME" ColumnName="Team_NAME" />
+          <ScalarProperty Name="Joining_Date" ColumnName="Joining_Date" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_User_Pages">
+      <EntityTypeMapping TypeName="Club_DatabaseModel.Table_User_Pages">
+        <MappingFragment StoreEntitySet="Table_User_Pages">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+          <ScalarProperty Name="Page_ID" ColumnName="Page_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_User_Profile">
+      <EntityTypeMapping TypeName="Club_DatabaseModel.Table_User_Profile">
+        <MappingFragment StoreEntitySet="Table_User_Profile">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Member_ID" ColumnName="Member_ID" />
+          <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+          <ScalarProperty Name="User_Pass" ColumnName="User_Pass" />
+          <ScalarProperty Name="User_Full_Nmae" ColumnName="User_Full_Nmae" />
+          <ScalarProperty Name="User_Teams" ColumnName="User_Teams" />
+          <ScalarProperty Name="Lock_Account" ColumnName="Lock_Account" />
+          <ScalarProperty Name="InActive" ColumnName="InActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_User_Teams">
+      <EntityTypeMapping TypeName="Club_DatabaseModel.Table_User_Teams">
+        <MappingFragment StoreEntitySet="Table_User_Teams">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+          <ScalarProperty Name="Teams_ID" ColumnName="Teams_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_History_Contests">
+      <EntityTypeMapping TypeName="Club_DatabaseModel.Table_History_Contests">
+        <MappingFragment StoreEntitySet="Table_History_Contests">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="Contests_ID" ColumnName="Contests_ID" />
+          <ScalarProperty Name="Member_ID" ColumnName="Member_ID" />
+          <ScalarProperty Name="Team_ID" ColumnName="Team_ID" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_New_Team" FunctionName="Club_DatabaseModel.Store.SP_New_Team" />
+  </EntityContainerMapping>
+</Mapping>

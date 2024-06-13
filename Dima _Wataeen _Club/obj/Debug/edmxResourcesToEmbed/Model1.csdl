@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Club_DatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Table_Booking_Details">
+    <Key>
+      <PropertyRef Name="Teams_ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Teams_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Teams_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Full_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Booking_Date" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Table_Contests">
+    <Key>
+      <PropertyRef Name="Contests_ID" />
+    </Key>
+    <Property Name="Contests_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name_Contests" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Table_Expenses">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date_Exchange" Type="DateTime" Precision="0" />
+    <Property Name="Amount" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="Approval_Date" Type="DateTime" Precision="0" />
+    <Property Name="Who_Approved_ID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Approval" Type="Boolean" />
+    <Property Name="Bill_PicUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Table_Master_Member">
+    <Key>
+      <PropertyRef Name="Member_ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Member_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Full_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Marital_Status" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="Date_Birth" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="PicUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Team_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="Member_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Card_ID_ON" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Team_Name" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Joining_Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Payment_Required" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Table_Member_Details">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Member_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Datefrom" Type="DateTime" Precision="0" />
+    <Property Name="Dateto" Type="DateTime" Precision="0" />
+    <Property Name="PicUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Member_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Table_Teams">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Team_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Team_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Joining_Date" Type="DateTime" Precision="0" />
+    <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Table_User_Pages">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Page_ID" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Table_User_Profile">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Member_ID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="User_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="User_Pass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="User_Full_Nmae" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="User_Teams" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Lock_Account" Type="Boolean" Nullable="false" />
+    <Property Name="InActive" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Table_User_Teams">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Teams_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Table_History_Contests">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Contests_ID" />
+      <PropertyRef Name="Member_ID" />
+      <PropertyRef Name="Team_ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Year" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Contests_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Member_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Team_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="Club_DatabaseEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Table_Booking_Details" EntityType="Self.Table_Booking_Details" />
+    <EntitySet Name="Table_Contests" EntityType="Self.Table_Contests" />
+    <EntitySet Name="Table_Expenses" EntityType="Self.Table_Expenses" />
+    <EntitySet Name="Table_Master_Member" EntityType="Self.Table_Master_Member" />
+    <EntitySet Name="Table_Member_Details" EntityType="Self.Table_Member_Details" />
+    <EntitySet Name="Table_Teams" EntityType="Self.Table_Teams" />
+    <EntitySet Name="Table_User_Pages" EntityType="Self.Table_User_Pages" />
+    <EntitySet Name="Table_User_Profile" EntityType="Self.Table_User_Profile" />
+    <EntitySet Name="Table_User_Teams" EntityType="Self.Table_User_Teams" />
+    <EntitySet Name="Table_History_Contests" EntityType="Self.Table_History_Contests" />
+    <FunctionImport Name="SP_New_Team">
+      <Parameter Name="Action" Mode="In" Type="String" />
+      <Parameter Name="ID" Mode="In" Type="Decimal" />
+      <Parameter Name="Team_ID" Mode="In" Type="String" />
+      <Parameter Name="Team_NAME" Mode="In" Type="String" />
+      <Parameter Name="Joining_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="Note" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+</Schema>

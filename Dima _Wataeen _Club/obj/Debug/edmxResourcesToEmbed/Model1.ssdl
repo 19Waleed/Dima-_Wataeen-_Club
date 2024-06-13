@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Club_DatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Table_Booking_Details">
+    <Key>
+      <PropertyRef Name="Teams_ID" />
+    </Key>
+    <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Teams_ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Teams_NAME" Type="nvarchar" MaxLength="255" />
+    <Property Name="Full_Name" Type="nvarchar" MaxLength="255" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="255" />
+    <Property Name="Booking_Date" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Table_Contests">
+    <Key>
+      <PropertyRef Name="Contests_ID" />
+    </Key>
+    <Property Name="Contests_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name_Contests" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Notes" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Table_Expenses">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date_Exchange" Type="date" />
+    <Property Name="Amount" Type="numeric" Precision="38" Scale="0" />
+    <Property Name="Approval_Date" Type="date" />
+    <Property Name="Who_Approved_ID" Type="nvarchar" MaxLength="255" />
+    <Property Name="Approval" Type="bit" />
+    <Property Name="Bill_PicUrl" Type="varchar" MaxLength="100" />
+    <Property Name="Note" Type="nvarchar(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Club_Database.dbo.Table_History_Contests' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Table_History_Contests">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Contests_ID" />
+      <PropertyRef Name="Member_ID" />
+      <PropertyRef Name="Team_ID" />
+    </Key>
+    <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Year" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="Contests_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Member_ID" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Team_ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Table_Master_Member">
+    <Key>
+      <PropertyRef Name="Member_ID" />
+    </Key>
+    <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Member_ID" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Full_Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Marital_Status" Type="nvarchar" MaxLength="60" />
+    <Property Name="Date_Birth" Type="date" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="255" />
+    <Property Name="PicUrl" Type="varchar" MaxLength="100" />
+    <Property Name="Team_ID" Type="numeric" Precision="38" Scale="0" />
+    <Property Name="Member_Type" Type="nvarchar" MaxLength="50" />
+    <Property Name="Card_ID_ON" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Team_Name" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Note" Type="nvarchar(max)" />
+    <Property Name="Joining_Date" Type="date" Nullable="false" />
+    <Property Name="Payment_Required" Type="bit" />
+  </EntityType>
+  <EntityType Name="Table_Member_Details">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Member_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Details" Type="nvarchar(max)" />
+    <Property Name="Datefrom" Type="date" />
+    <Property Name="Dateto" Type="date" />
+    <Property Name="PicUrl" Type="varchar" MaxLength="100" />
+    <Property Name="Member_Type" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Table_Teams">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Team_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="Team_NAME" Type="nvarchar" MaxLength="255" />
+    <Property Name="Joining_Date" Type="date" />
+    <Property Name="Note" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Table_User_Pages">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Page_ID" Type="decimal" Precision="3" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Table_User_Profile">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Member_ID" Type="nvarchar" MaxLength="255" />
+    <Property Name="User_Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="User_Pass" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="User_Full_Nmae" Type="nvarchar" MaxLength="200" />
+    <Property Name="User_Teams" Type="nvarchar" MaxLength="150" />
+    <Property Name="Lock_Account" Type="bit" Nullable="false" />
+    <Property Name="InActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Table_User_Teams">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Teams_ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Function Name="SP_New_Team" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+    <Parameter Name="ID" Type="numeric" Mode="In" />
+    <Parameter Name="Team_ID" Type="nvarchar" Mode="In" />
+    <Parameter Name="Team_NAME" Type="nvarchar" Mode="In" />
+    <Parameter Name="Joining_Date" Type="date" Mode="In" />
+    <Parameter Name="Note" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <EntityContainer Name="Club_DatabaseModelStoreContainer">
+    <EntitySet Name="Table_Booking_Details" EntityType="Self.Table_Booking_Details" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Table_Contests" EntityType="Self.Table_Contests" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Table_Expenses" EntityType="Self.Table_Expenses" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Table_Master_Member" EntityType="Self.Table_Master_Member" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Table_Member_Details" EntityType="Self.Table_Member_Details" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Table_Teams" EntityType="Self.Table_Teams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Table_User_Pages" EntityType="Self.Table_User_Pages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Table_User_Profile" EntityType="Self.Table_User_Profile" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Table_User_Teams" EntityType="Self.Table_User_Teams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Table_History_Contests" EntityType="Self.Table_History_Contests" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[Table_History_Contests].[ID] AS [ID], 
+[Table_History_Contests].[Year] AS [Year], 
+[Table_History_Contests].[Contests_ID] AS [Contests_ID], 
+[Table_History_Contests].[Member_ID] AS [Member_ID], 
+[Table_History_Contests].[Team_ID] AS [Team_ID], 
+[Table_History_Contests].[Notes] AS [Notes]
+FROM [dbo].[Table_History_Contests] AS [Table_History_Contests]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
