@@ -1,0 +1,3 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Site_Club.Master" AutoEventWireup="true" CodeBehind="NestedMasterPage1.master.cs" Inherits="Dima__Wataeen__Club.NestedMasterPage1" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>

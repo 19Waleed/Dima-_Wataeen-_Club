@@ -1,0 +1,131 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="Dima__Wataeen__Club.Site1" %>
+
+<!DOCTYPE html>
+
+<html lang="ar-om" xmlns="http://www.w3.org/1999/xhtml" xml:lang="ar" dir="rtl" >
+<head id="Head1" runat="server">
+    <title>منظومة القوى البشرية (مورد)</title>
+    <meta charset="utf-8"/>
+    <meta http-equiv="pragma" content="no-cache"/>
+     <meta name="viewport" content="width=320, height=device-height, initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=0 " />
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" type="image/x-icon" href="images/RAO.ico" />
+    <link href="Bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Scripts/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <link href="~/Styles/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Styles/fontawesome.css" rel="stylesheet" type="text/css" />
+    <link href="~/Styles/fontawesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="Styles/font-awesome.min.css" rel="stylesheet" />
+    <link href="Styles/fontawesome.css" rel="stylesheet" />
+    <link href="Styles/fontawesome.min.css" rel="stylesheet" />
+    <script src="js/bootstrap.js"></script>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="../Scripts/jquery-3.3.1.min.js"></script>
+    <script src="./Scripts/jquery-3.3.1.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="../Scripts/jquery-3.3.1.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="Scripts/jquery-3.3.1.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.searchabledropdown-1.0.8.min.js"></script>
+    <script src="~/js/jquery.searchabledropdown-1.0.8.min.js"></script>
+    <script src="./js/jquery.searchabledropdown-1.0.8.min.js"></script>
+    <script src="../js/jquery.searchabledropdown-1.0.8.min.js"></script>
+        <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <script>
+
+        $(function () {
+
+            $('#btnInfo').click(function () {
+                $('#myModal').modal('show');
+            })
+
+            $('#btnInfo1').click(function () {
+                $('#myModal1').modal('show');
+            })
+
+
+            $('#myModal').on('shown.bs.modal', function () {
+                $('#txtInfo').trigger('focus')
+            })
+
+        });
+    </script>
+
+    </head>
+<body>
+
+    <form id="Form1" enctype="multipart/form-data" runat="server" class="Content" style="font-family: 'Lateef'; width: 100%; height: 99%;">
+
+        <div dir="rtl" style="margin-left: 40px">
+
+  
+
+            <button type="button" class="btn btn-info" data-toggle="modal" id="btnInfo" style="position: fixed" runat="server">...</button>
+
+            <div id="myModal" class="modal fade" role="dialog">
+                <div class="modal-dialog modal-dialog-centered" style="text-align: center">
+                    <div class="modal-content" style="background-color: burlywood">
+                        <div class="modal-header">
+                            <h2 class="modal-title" style="text-align: right">التعليمات</h2>
+                        </div>
+
+                        <div class="modal-body">
+                            <asp:TextBox ID="txtInfo" Style="text-align: right" ReadOnly="true" runat="server" Font-Size="X-Large" Height="700px" TextMode="MultiLine" Width="100%"></asp:TextBox>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success" data-dismiss="modal" style="width: 200px">إغلاق </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div style="border-style: hidden;">
+            <div style="border-style: solid; border-color: #d99b86; background-color: #d99b86; text-align: center;">
+                <img src="~/img/club_Heder11.png" runat="server" alt="Header" style="width: 100%; height: 115px;" class="newheader" />
+            </div>
+
+            <table style="padding: 0px; margin: 0px; width: 100%; height: 100%; font-family: 'Lateef';">
+
+                <tr>
+                    <td  style="vertical-align: top; text-align:justify;"
+                        dir="rtl">
+                        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                        <asp:UpdatePanel ID="UpdatePanel121" runat="server">
+                            <ContentTemplate>
+                                <div dir="rtl" style="font-size: x-large;">
+
+                                    <asp:Menu ID="MainMenu"
+                                        runat="server"
+                                        CssClass="menu"
+                                        DisappearAfter="500"
+                                        Width="100%"
+                                        EnableViewState="True"
+                                        DynamicEnableDefaultPopOutImage="False"
+                                        StaticEnableDefaultPopOutImage="False" Height="180px">
+                                    </asp:Menu>
+                                </div>
+                            </ContentTemplate>
+
+                        </asp:UpdatePanel>
+                    </td>    
+                    <td style="width: 100%; text-align: right;">
+                        <div class="main" style="width: 100%">
+                            <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+                            <asp:TextBox ID="txtFileName" Visible="False" Width="10%" runat="server"></asp:TextBox>
+                        </div>
+                    </td>
+                </tr>
+                <div style="border: thin none #C1B7AD; text-align: inherit; width: 10%; position: fixed; z-index: auto; left: -41px; top: 0px;">
+                    <asp:Label ID="LbLUserName" runat="server" Font-Bold="False" ForeColor="#666666"></asp:Label>
+            </table>
+        </div>
+
+    </form>
+</body>
+</html>

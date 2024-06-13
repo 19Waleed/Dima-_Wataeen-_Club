@@ -1,0 +1,2659 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Club_DatabaseModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Menus">
+          <Key>
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="MenuId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParentMenuId" Type="int" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="100" />
+          <Property Name="Description" Type="varchar" MaxLength="100" />
+          <Property Name="Url" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Table_Booking_Details">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Teams_ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="255" />
+          <Property Name="Booking_Date" Type="nchar" MaxLength="10" />
+          <Property Name="WhoInsert" Type="nvarchar" MaxLength="50" />
+          <Property Name="InsertDate" Type="date" />
+          <Property Name="ApproveBy" Type="nvarchar" MaxLength="20" />
+          <Property Name="ApproveDate" Type="date" />
+          <Property Name="WhoUpdate" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdateDate" Type="date" />
+          <Property Name="WhoDelete" Type="nvarchar" MaxLength="50" />
+          <Property Name="DeleteDate" Type="date" />
+          <Property Name="RecordDelete" Type="bit" />
+          <Property Name="Notes" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Table_Contests">
+          <Key>
+            <PropertyRef Name="Contests_ID" />
+          </Key>
+          <Property Name="Contests_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name_Contests" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Table_Expenses">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date_Exchange" Type="date" />
+          <Property Name="Amount" Type="numeric" Precision="38" Scale="0" />
+          <Property Name="Approval_Date" Type="date" />
+          <Property Name="Who_Approved_ID" Type="nvarchar" MaxLength="255" />
+          <Property Name="Approval" Type="bit" />
+          <Property Name="Bill_PicUrl" Type="varchar" MaxLength="100" />
+          <Property Name="Note" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Club_Database.dbo.Table_History_Contests' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Table_History_Contests">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Contests_ID" />
+            <PropertyRef Name="Member_ID" />
+            <PropertyRef Name="Team_ID" />
+          </Key>
+          <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Year" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Contests_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Member_ID" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Team_ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Table_Job status">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JobName" Type="nvarchar" MaxLength="50" />
+          <Property Name="subscription" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Table_Master_Member">
+          <Key>
+            <PropertyRef Name="Member_ID" />
+          </Key>
+          <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Member_ID" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Full_Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="255" />
+          <Property Name="Marital_Status" Type="nvarchar" MaxLength="100" />
+          <Property Name="Date_Birth" Type="date" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="255" />
+          <Property Name="Team_ID" Type="nvarchar" MaxLength="100" />
+          <Property Name="Member_Type" Type="nvarchar" MaxLength="100" />
+          <Property Name="Card_ID_ON" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Note" Type="nvarchar(max)" />
+          <Property Name="Joining_Date" Type="date" />
+          <Property Name="WhoInsert" Type="nvarchar" MaxLength="50" />
+          <Property Name="InsertDate" Type="date" />
+          <Property Name="ApproveBy" Type="nvarchar" MaxLength="20" />
+          <Property Name="ApproveDate" Type="date" />
+          <Property Name="WhoUpdate" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdateDate" Type="date" />
+          <Property Name="WhoDelete" Type="nvarchar" MaxLength="50" />
+          <Property Name="DeleteDate" Type="date" />
+          <Property Name="ID_subscription" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="PicUrl" Type="varchar" MaxLength="100" />
+          <Property Name="ReturnY_N" Type="bit" />
+        </EntityType>
+        <EntityType Name="Table_Member_Details">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Member_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Details" Type="nvarchar(max)" />
+          <Property Name="Datefrom" Type="date" />
+          <Property Name="Dateto" Type="date" />
+          <Property Name="PicUrl" Type="varchar" MaxLength="100" />
+          <Property Name="Member_Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="PicUrl1" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Table_Subscriptions">
+          <Key>
+            <PropertyRef Name="Subscriptions_ID" />
+          </Key>
+          <Property Name="Subscriptions_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberIdOrTeamId" Type="nvarchar" MaxLength="100" />
+          <Property Name="Payment_Date" Type="date" />
+          <Property Name="Subscriptions_Eyare" Type="int" />
+          <Property Name="ID_subscription" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="subscription" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="PaymentY_N" Type="bit" />
+          <Property Name="Note" Type="nvarchar(max)" />
+          <Property Name="WhoInsert" Type="nvarchar" MaxLength="50" />
+          <Property Name="InsertDate" Type="date" />
+          <Property Name="ApproveBy" Type="nvarchar" MaxLength="20" />
+          <Property Name="ApproveDate" Type="date" />
+          <Property Name="WhoUpdate" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdateDate" Type="date" />
+          <Property Name="WhoDelete" Type="nvarchar" MaxLength="50" />
+          <Property Name="DeleteDate" Type="date" />
+          <Property Name="PaymentReceiptPath" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Table_Teams">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Team_ID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Team_NAME" Type="nvarchar" MaxLength="255" />
+          <Property Name="Joining_Date" Type="date" />
+          <Property Name="Note" Type="nvarchar(max)" />
+          <Property Name="ID_subscription" Type="int" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="WhoInsert" Type="nvarchar" MaxLength="50" />
+          <Property Name="InsertDate" Type="date" />
+        </EntityType>
+        <EntityType Name="Table_User_Pages">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Page_ID" Type="decimal" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="From_Date" Type="date" />
+          <Property Name="WhoInsert" Type="nvarchar" MaxLength="50" />
+          <Property Name="InsertDate" Type="date" />
+          <Property Name="ApproveBy" Type="nvarchar" MaxLength="20" />
+          <Property Name="ApproveDate" Type="date" />
+          <Property Name="WhoUpdate" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdateDate" Type="date" />
+          <Property Name="WhoDelete" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Table_User_Profile">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Member_ID" Type="nvarchar" MaxLength="100" />
+          <Property Name="User_Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="User_Pass" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Lock_Account" Type="bit" Nullable="false" />
+          <Property Name="InActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_User_Teams">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Teams_ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Club_Database.dbo.VewPageInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VewPageInfo">
+          <Key>
+            <PropertyRef Name="Info_ID" />
+            <PropertyRef Name="FileName" />
+          </Key>
+          <Property Name="Info_ID" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="FileName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FileTitle" Type="nvarchar" MaxLength="100" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="500" />
+          <Property Name="Info" Type="nvarchar(max)" />
+          <Property Name="AddedBy" Type="nvarchar" MaxLength="20" />
+          <Property Name="AddedDate" Type="smalldatetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Club_Database.dbo.VewUserRole' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VewUserRole">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="User_Name" />
+            <PropertyRef Name="Page_ID" />
+            <PropertyRef Name="MenuId" />
+            <PropertyRef Name="ParentID" />
+            <PropertyRef Name="Url" />
+          </Key>
+          <Property Name="ID" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="User_Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Page_ID" Type="decimal" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="MenuId" Type="int" Nullable="false" />
+          <Property Name="ParentID" Type="int" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="100" />
+          <Property Name="Description" Type="varchar" MaxLength="100" />
+          <Property Name="Url" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Club_Database.dbo.View_AccecsUser_Pages' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_AccecsUser_Pages">
+          <Key>
+            <PropertyRef Name="Page_ID" />
+            <PropertyRef Name="User_Name" />
+            <PropertyRef Name="ParentMenuId" />
+            <PropertyRef Name="Full_Name" />
+          </Key>
+          <Property Name="Page_ID" Type="decimal" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="User_Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="100" />
+          <Property Name="ParentMenuId" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="100" />
+          <Property Name="Member_ID" Type="nvarchar" MaxLength="100" />
+          <Property Name="Full_Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Team_NAME" Type="nvarchar" MaxLength="255" />
+          <Property Name="Team_ID" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Club_Database.dbo.View_BookDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_BookDetails">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Teams_ID" />
+          </Key>
+          <Property Name="Team_NAME" Type="nvarchar" MaxLength="255" />
+          <Property Name="ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Teams_ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="255" />
+          <Property Name="Booking_Date" Type="nchar" MaxLength="10" />
+          <Property Name="WhoInsert" Type="nvarchar" MaxLength="50" />
+          <Property Name="InsertDate" Type="date" />
+          <Property Name="ApproveBy" Type="nvarchar" MaxLength="20" />
+          <Property Name="ApproveDate" Type="date" />
+          <Property Name="WhoUpdate" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdateDate" Type="date" />
+          <Property Name="WhoDelete" Type="nvarchar" MaxLength="50" />
+          <Property Name="DeleteDate" Type="date" />
+          <Property Name="RecordDelete" Type="bit" />
+          <Property Name="Notes" Type="nvarchar(max)" />
+          <Property Name="Phone_1" Type="nvarchar" MaxLength="255" />
+          <Property Name="Full_Name" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Club_Database.dbo.View_BookingReport' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_BookingReport">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Teams_ID" />
+          </Key>
+          <Property Name="Team_NAME" Type="nvarchar" MaxLength="255" />
+          <Property Name="ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Teams_ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="255" />
+          <Property Name="Booking_Date" Type="nchar" MaxLength="10" />
+          <Property Name="WhoInsert" Type="nvarchar" MaxLength="50" />
+          <Property Name="InsertDate" Type="date" />
+          <Property Name="ApproveBy" Type="nvarchar" MaxLength="20" />
+          <Property Name="ApproveDate" Type="date" />
+          <Property Name="WhoUpdate" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdateDate" Type="date" />
+          <Property Name="WhoDelete" Type="nvarchar" MaxLength="50" />
+          <Property Name="DeleteDate" Type="date" />
+          <Property Name="RecordDelete" Type="bit" />
+          <Property Name="Notes" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Club_Database.dbo.View_Master_MembeApproved' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_Master_MembeApproved">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Member_ID" />
+            <PropertyRef Name="Full_Name" />
+          </Key>
+          <Property Name="ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="JobName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Team_NAME" Type="nvarchar" MaxLength="255" />
+          <Property Name="Subscription" Type="varchar" MaxLength="13" />
+          <Property Name="Member_ID" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Full_Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="255" />
+          <Property Name="Marital_Status" Type="nvarchar" MaxLength="100" />
+          <Property Name="Date_Birth" Type="date" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="255" />
+          <Property Name="Team_ID" Type="nvarchar" MaxLength="100" />
+          <Property Name="Member_Type" Type="nvarchar" MaxLength="100" />
+          <Property Name="Card_ID_ON" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Note" Type="nvarchar(max)" />
+          <Property Name="Joining_Date" Type="date" />
+          <Property Name="WhoInsert" Type="nvarchar" MaxLength="50" />
+          <Property Name="InsertDate" Type="date" />
+          <Property Name="ApproveBy" Type="nvarchar" MaxLength="20" />
+          <Property Name="ApproveDate" Type="date" />
+          <Property Name="WhoUpdate" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdateDate" Type="date" />
+          <Property Name="WhoDelete" Type="nvarchar" MaxLength="50" />
+          <Property Name="DeleteDate" Type="date" />
+          <Property Name="ID_subscription" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="subscription_" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Club_Database.dbo.View_Master_MembeByApp' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_Master_MembeByApp">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Member_ID" />
+            <PropertyRef Name="Full_Name" />
+          </Key>
+          <Property Name="ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="JobName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Team_NAME" Type="nvarchar" MaxLength="255" />
+          <Property Name="Subscription" Type="nvarchar" MaxLength="12" />
+          <Property Name="Member_ID" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Full_Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="255" />
+          <Property Name="Marital_Status" Type="nvarchar" MaxLength="100" />
+          <Property Name="Date_Birth" Type="date" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="255" />
+          <Property Name="Team_ID" Type="nvarchar" MaxLength="100" />
+          <Property Name="Member_Type" Type="nvarchar" MaxLength="100" />
+          <Property Name="Card_ID_ON" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Note" Type="nvarchar(max)" />
+          <Property Name="Joining_Date" Type="date" />
+          <Property Name="WhoInsert" Type="nvarchar" MaxLength="50" />
+          <Property Name="InsertDate" Type="date" />
+          <Property Name="ApproveBy" Type="nvarchar" MaxLength="20" />
+          <Property Name="ApproveDate" Type="date" />
+          <Property Name="WhoUpdate" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdateDate" Type="date" />
+          <Property Name="WhoDelete" Type="nvarchar" MaxLength="50" />
+          <Property Name="DeleteDate" Type="date" />
+          <Property Name="ID_subscription" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="PicUrl" Type="varchar" MaxLength="100" />
+          <Property Name="ReturnY_N" Type="bit" />
+          <Property Name="Expr1" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Club_Database.dbo.View_MemberReport' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_MemberReport">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Member_ID" />
+            <PropertyRef Name="Full_Name" />
+          </Key>
+          <Property Name="ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="JobName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Team_NAME" Type="nvarchar" MaxLength="255" />
+          <Property Name="Subscription" Type="varchar" MaxLength="13" />
+          <Property Name="Member_ID" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Full_Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="255" />
+          <Property Name="Marital_Status" Type="nvarchar" MaxLength="100" />
+          <Property Name="Date_Birth" Type="date" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="255" />
+          <Property Name="Team_ID" Type="nvarchar" MaxLength="100" />
+          <Property Name="Member_Type" Type="nvarchar" MaxLength="100" />
+          <Property Name="Card_ID_ON" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Note" Type="nvarchar(max)" />
+          <Property Name="Joining_Date" Type="date" />
+          <Property Name="WhoInsert" Type="nvarchar" MaxLength="50" />
+          <Property Name="InsertDate" Type="date" />
+          <Property Name="ApproveBy" Type="nvarchar" MaxLength="20" />
+          <Property Name="ApproveDate" Type="date" />
+          <Property Name="WhoUpdate" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdateDate" Type="date" />
+          <Property Name="WhoDelete" Type="nvarchar" MaxLength="50" />
+          <Property Name="DeleteDate" Type="date" />
+          <Property Name="ID_subscription" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="subscription_" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'Club_Database.dbo.View_page' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="View_page">
+          <Property Name="MenuId" Type="int" />
+          <Property Name="ParentMenuId" Type="int" />
+          <Property Name="Title" Type="varchar" MaxLength="100" />
+          <Property Name="Description" Type="varchar" MaxLength="100" />
+          <Property Name="Url" Type="nvarchar" MaxLength="100" />
+          <Property Name="Page_ID" Type="decimal" Precision="3" Scale="0" />
+          <Property Name="User_Name" Type="nvarchar" MaxLength="20" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Club_Database.dbo.View_Page_Info' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_Page_Info">
+          <Key>
+            <PropertyRef Name="Info_ID" />
+            <PropertyRef Name="FileName" />
+          </Key>
+          <Property Name="Info_ID" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="FileName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FileTitle" Type="nvarchar" MaxLength="100" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Club_Database.dbo.View_Payment_Member' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_Payment_Member">
+          <Key>
+            <PropertyRef Name="Subscriptions_ID" />
+            <PropertyRef Name="Member_ID" />
+            <PropertyRef Name="Full_Name" />
+          </Key>
+          <Property Name="Subscriptions_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Payment_Date" Type="date" />
+          <Property Name="Subscriptions_Eyare" Type="int" />
+          <Property Name="ID_subscription" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="subscription" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="PaymentY_N" Type="bit" />
+          <Property Name="Note" Type="nvarchar(max)" />
+          <Property Name="WhoInsert" Type="nvarchar" MaxLength="50" />
+          <Property Name="InsertDate" Type="date" />
+          <Property Name="ApproveBy" Type="nvarchar" MaxLength="20" />
+          <Property Name="ApproveDate" Type="date" />
+          <Property Name="WhoUpdate" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdateDate" Type="date" />
+          <Property Name="WhoDelete" Type="nvarchar" MaxLength="50" />
+          <Property Name="DeleteDate" Type="date" />
+          <Property Name="PaymentReceiptPath" Type="varchar" MaxLength="250" />
+          <Property Name="Member_ID" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Full_Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="255" />
+          <Property Name="Team_NAME" Type="nvarchar" MaxLength="255" />
+          <Property Name="Team_ID" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Club_Database.dbo.View_PaymentTeame' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_PaymentTeame">
+          <Key>
+            <PropertyRef Name="Subscriptions_ID" />
+          </Key>
+          <Property Name="Subscriptions_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="MemberIdOrTeamId" Type="nvarchar" MaxLength="100" />
+          <Property Name="Payment_Date" Type="date" />
+          <Property Name="Subscriptions_Eyare" Type="int" />
+          <Property Name="ID_subscription" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="subscription" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="PaymentY_N" Type="bit" />
+          <Property Name="Note" Type="nvarchar(max)" />
+          <Property Name="WhoInsert" Type="nvarchar" MaxLength="50" />
+          <Property Name="InsertDate" Type="date" />
+          <Property Name="ApproveBy" Type="nvarchar" MaxLength="20" />
+          <Property Name="ApproveDate" Type="date" />
+          <Property Name="WhoUpdate" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdateDate" Type="date" />
+          <Property Name="WhoDelete" Type="nvarchar" MaxLength="50" />
+          <Property Name="DeleteDate" Type="date" />
+          <Property Name="PaymentReceiptPath" Type="varchar" MaxLength="250" />
+          <Property Name="Team_NAME" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Club_Database.dbo.View_SELECMember' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_SELECMember">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Member_ID" />
+            <PropertyRef Name="Full_Name" />
+          </Key>
+          <Property Name="ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Member_ID" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Full_Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="255" />
+          <Property Name="Marital_Status" Type="nvarchar" MaxLength="100" />
+          <Property Name="Date_Birth" Type="date" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="255" />
+          <Property Name="Team_ID" Type="nvarchar" MaxLength="100" />
+          <Property Name="Member_Type" Type="nvarchar" MaxLength="100" />
+          <Property Name="Card_ID_ON" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Note" Type="nvarchar(max)" />
+          <Property Name="Joining_Date" Type="date" />
+          <Property Name="WhoInsert" Type="nvarchar" MaxLength="50" />
+          <Property Name="InsertDate" Type="date" />
+          <Property Name="ApproveBy" Type="nvarchar" MaxLength="20" />
+          <Property Name="ApproveDate" Type="date" />
+          <Property Name="WhoUpdate" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdateDate" Type="date" />
+          <Property Name="WhoDelete" Type="nvarchar" MaxLength="50" />
+          <Property Name="DeleteDate" Type="date" />
+          <Property Name="ID_subscription" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="PicUrl" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Club_Database.dbo.View_SELECMemberSELERetern' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_SELECMemberSELERetern">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Member_ID" />
+            <PropertyRef Name="Full_Name" />
+          </Key>
+          <Property Name="Member_ID_User" Type="nvarchar" MaxLength="100" />
+          <Property Name="ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Member_ID" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Full_Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="255" />
+          <Property Name="Marital_Status" Type="nvarchar" MaxLength="100" />
+          <Property Name="Date_Birth" Type="date" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="255" />
+          <Property Name="Team_ID" Type="nvarchar" MaxLength="100" />
+          <Property Name="Member_Type" Type="nvarchar" MaxLength="100" />
+          <Property Name="Card_ID_ON" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Note" Type="nvarchar(max)" />
+          <Property Name="Joining_Date" Type="date" />
+          <Property Name="WhoInsert" Type="nvarchar" MaxLength="50" />
+          <Property Name="InsertDate" Type="date" />
+          <Property Name="ApproveBy" Type="nvarchar" MaxLength="20" />
+          <Property Name="ApproveDate" Type="date" />
+          <Property Name="WhoUpdate" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdateDate" Type="date" />
+          <Property Name="WhoDelete" Type="nvarchar" MaxLength="50" />
+          <Property Name="DeleteDate" Type="date" />
+          <Property Name="ID_subscription" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="PicUrl" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'Club_Database.dbo.View_Teams' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="View_Teams">
+          <Property Name="Team_ID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Team_NAME" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Club_Database.dbo.View_TeamsApprove' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_TeamsApprove">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="ID_subscription" />
+          </Key>
+          <Property Name="ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Team_ID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Team_NAME" Type="nvarchar" MaxLength="255" />
+          <Property Name="Joining_Date" Type="date" />
+          <Property Name="Note" Type="nvarchar(max)" />
+          <Property Name="ID_subscription" Type="int" Nullable="false" />
+          <Property Name="subscription" Type="nchar" MaxLength="10" />
+          <Property Name="Subscription_" Type="nvarchar" MaxLength="12" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'Club_Database.dbo.View_TeamsReport' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="View_TeamsReport">
+          <Property Name="Team_ID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Team_NAME" Type="nvarchar" MaxLength="255" />
+          <Property Name="Joining_Date" Type="date" />
+          <Property Name="subscription" Type="varchar" MaxLength="13" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Club_Database.dbo.View_User_Pages' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_User_Pages">
+          <Key>
+            <PropertyRef Name="Member_ID" />
+            <PropertyRef Name="Full_Name" />
+            <PropertyRef Name="User_Name" />
+            <PropertyRef Name="User_Pass" />
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Lock_Account" />
+            <PropertyRef Name="InActive" />
+          </Key>
+          <Property Name="Member_ID" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Full_Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Team_ID" Type="nvarchar" MaxLength="50" />
+          <Property Name="User_Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="User_Pass" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Team_NAME" Type="nvarchar" MaxLength="255" />
+          <Property Name="Lock_Account" Type="bit" Nullable="false" />
+          <Property Name="InActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Club_Database.dbo.View_User_ProfileUser_Pass' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_User_ProfileUser_Pass">
+          <Key>
+            <PropertyRef Name="User_Pass" />
+          </Key>
+          <Property Name="Member_ID" Type="nvarchar" MaxLength="100" />
+          <Property Name="Full_Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="255" />
+          <Property Name="Team_NAME" Type="nvarchar" MaxLength="255" />
+          <Property Name="User_Pass" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Team_ID" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Club_Database.dbo.View_UserProfile' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_UserProfile">
+          <Key>
+            <PropertyRef Name="User_Name" />
+          </Key>
+          <Property Name="User_Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Member_ID" Type="nvarchar" MaxLength="100" />
+          <Property Name="Full_Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="255" />
+          <Property Name="Team_NAME" Type="nvarchar" MaxLength="255" />
+          <Property Name="Title" Type="varchar" MaxLength="100" />
+          <Property Name="User_Pass" Type="nvarchar" MaxLength="50" />
+          <Property Name="Team_ID" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="SP__Booking_Date" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="SP_ Booking_Date">
+          <Parameter Name="Action" Type="varchar" Mode="In" />
+          <Parameter Name="ID" Type="numeric" Mode="In" />
+          <Parameter Name="Team_ID" Type="nvarchar" Mode="In" />
+          <Parameter Name="Phonen" Type="varchar" Mode="In" />
+          <Parameter Name="Booking_Date" Type="date" Mode="In" />
+          <Parameter Name="WhoInsert" Type="nvarchar" Mode="In" />
+          <Parameter Name="InsertDatee" Type="date" Mode="In" />
+          <Parameter Name="ApproveBy" Type="nvarchar" Mode="In" />
+          <Parameter Name="ApproveDate" Type="date" Mode="In" />
+          <Parameter Name="WhoUpdate" Type="nvarchar" Mode="In" />
+          <Parameter Name="UpdateDate" Type="date" Mode="In" />
+          <Parameter Name="WhoDelete" Type="nvarchar" Mode="In" />
+          <Parameter Name="DeleteDate" Type="date" Mode="In" />
+          <Parameter Name="RecordDelete" Type="bit" Mode="In" />
+          <Parameter Name="Notes" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_Master_Member" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Action" Type="varchar" Mode="In" />
+          <Parameter Name="ID" Type="numeric" Mode="In" />
+          <Parameter Name="Member_ID" Type="nvarchar" Mode="In" />
+          <Parameter Name="Full_Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Address" Type="nvarchar" Mode="In" />
+          <Parameter Name="Marital_Status" Type="nvarchar" Mode="In" />
+          <Parameter Name="Date_Birth" Type="date" Mode="In" />
+          <Parameter Name="Phone" Type="nvarchar" Mode="In" />
+          <Parameter Name="PicUrl" Type="varchar" Mode="In" />
+          <Parameter Name="Team_ID" Type="nvarchar" Mode="In" />
+          <Parameter Name="Member_Type" Type="nvarchar" Mode="In" />
+          <Parameter Name="Card_ID_ON" Type="numeric" Mode="In" />
+          <Parameter Name="Note" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Joining_Date" Type="date" Mode="In" />
+          <Parameter Name="ID_subscription" Type="numeric" Mode="In" />
+          <Parameter Name="subscription" Type="nvarchar" Mode="In" />
+          <Parameter Name="JobName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Team_NAME" Type="nvarchar" Mode="In" />
+          <Parameter Name="WhoInsert" Type="nvarchar" Mode="In" />
+          <Parameter Name="InsertDate" Type="date" Mode="In" />
+          <Parameter Name="ApproveBy" Type="nvarchar" Mode="In" />
+          <Parameter Name="ApproveDate" Type="date" Mode="In" />
+          <Parameter Name="WhoUpdate" Type="nvarchar" Mode="In" />
+          <Parameter Name="UpdateDate" Type="date" Mode="In" />
+          <Parameter Name="WhoDelete" Type="nvarchar" Mode="In" />
+          <Parameter Name="DeleteDate" Type="date" Mode="In" />
+          <Parameter Name="RecordDelete" Type="bit" Mode="In" />
+          <Parameter Name="ReturnY_N" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="SP_New_Team" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Action" Type="varchar" Mode="In" />
+          <Parameter Name="ID" Type="numeric" Mode="In" />
+          <Parameter Name="Team_ID" Type="nvarchar" Mode="In" />
+          <Parameter Name="Team_NAME" Type="nvarchar" Mode="In" />
+          <Parameter Name="Joining_Date" Type="date" Mode="In" />
+          <Parameter Name="Note" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="WhoInsert" Type="nvarchar" Mode="In" />
+          <Parameter Name="InsertDate" Type="date" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_sign_in" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Action" Type="varchar" Mode="In" />
+          <Parameter Name="User_Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="User_Pass" Type="nvarchar" Mode="In" />
+          <Parameter Name="InActive" Type="bit" Mode="In" />
+          <Parameter Name="Lock_Account" Type="bit" Mode="In" />
+          <Parameter Name="Member_ID" Type="nvarchar" Mode="In" />
+          <Parameter Name="Full_Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Team_ID" Type="nvarchar" Mode="In" />
+          <Parameter Name="ID" Type="nvarchar" Mode="In" />
+          <Parameter Name="From_Datee" Type="date" Mode="In" />
+          <Parameter Name="Page_ID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_Subscriptions" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Action" Type="varchar" Mode="In" />
+          <Parameter Name="Subscriptions_ID" Type="numeric" Mode="In" />
+          <Parameter Name="Member_ID" Type="nvarchar" Mode="In" />
+          <Parameter Name="MemberIdOrTeamId" Type="nvarchar" Mode="In" />
+          <Parameter Name="Payment_Date" Type="date" Mode="In" />
+          <Parameter Name="Subscriptions_Eyare" Type="int" Mode="In" />
+          <Parameter Name="ID_subscription" Type="numeric" Mode="In" />
+          <Parameter Name="subscription" Type="nchar" Mode="In" />
+          <Parameter Name="PaymentY_N" Type="bit" Mode="In" />
+          <Parameter Name="Note" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="WhoInsert" Type="nvarchar" Mode="In" />
+          <Parameter Name="InsertDate" Type="date" Mode="In" />
+          <Parameter Name="ApproveBy" Type="nvarchar" Mode="In" />
+          <Parameter Name="ApproveDate" Type="date" Mode="In" />
+          <Parameter Name="WhoUpdate" Type="nvarchar" Mode="In" />
+          <Parameter Name="UpdateDate" Type="date" Mode="In" />
+          <Parameter Name="WhoDelete" Type="nvarchar" Mode="In" />
+          <Parameter Name="DeleteDate" Type="date" Mode="In" />
+          <Parameter Name="ID" Type="numeric" Mode="In" />
+          <Parameter Name="Team_ID" Type="nvarchar" Mode="In" />
+          <Parameter Name="Team_NAME" Type="nvarchar" Mode="In" />
+          <Parameter Name="Joining_Date" Type="date" Mode="In" />
+          <Parameter Name="PaymentReceiptPath" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_User_Profile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Action" Type="varchar" Mode="In" />
+          <Parameter Name="ID" Type="decimal" Mode="In" />
+          <Parameter Name="Member_ID" Type="nvarchar" Mode="In" />
+          <Parameter Name="User_Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="User_Pass" Type="nvarchar" Mode="In" />
+          <Parameter Name="Lock_Account" Type="bit" Mode="In" />
+          <Parameter Name="InActive" Type="bit" Mode="In" />
+        </Function>
+        <EntityContainer Name="Club_DatabaseModel1StoreContainer">
+          <EntitySet Name="Menus" EntityType="Self.Menus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Booking_Details" EntityType="Self.Table_Booking_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Contests" EntityType="Self.Table_Contests" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Expenses" EntityType="Self.Table_Expenses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Job status" EntityType="Self.Table_Job status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Master_Member" EntityType="Self.Table_Master_Member" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Member_Details" EntityType="Self.Table_Member_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Subscriptions" EntityType="Self.Table_Subscriptions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Teams" EntityType="Self.Table_Teams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_User_Pages" EntityType="Self.Table_User_Pages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_User_Profile" EntityType="Self.Table_User_Profile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_User_Teams" EntityType="Self.Table_User_Teams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_History_Contests" EntityType="Self.Table_History_Contests" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[Table_History_Contests].[ID] AS [ID], 
+[Table_History_Contests].[Year] AS [Year], 
+[Table_History_Contests].[Contests_ID] AS [Contests_ID], 
+[Table_History_Contests].[Member_ID] AS [Member_ID], 
+[Table_History_Contests].[Team_ID] AS [Team_ID], 
+[Table_History_Contests].[Notes] AS [Notes]
+FROM [dbo].[Table_History_Contests] AS [Table_History_Contests]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VewPageInfo" EntityType="Self.VewPageInfo" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[VewPageInfo].[Info_ID] AS [Info_ID], 
+[VewPageInfo].[FileName] AS [FileName], 
+[VewPageInfo].[FileTitle] AS [FileTitle], 
+[VewPageInfo].[Remarks] AS [Remarks], 
+[VewPageInfo].[Info] AS [Info], 
+[VewPageInfo].[AddedBy] AS [AddedBy], 
+[VewPageInfo].[AddedDate] AS [AddedDate]
+FROM [dbo].[VewPageInfo] AS [VewPageInfo]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VewUserRole" EntityType="Self.VewUserRole" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[VewUserRole].[ID] AS [ID], 
+[VewUserRole].[User_Name] AS [User_Name], 
+[VewUserRole].[Page_ID] AS [Page_ID], 
+[VewUserRole].[MenuId] AS [MenuId], 
+[VewUserRole].[ParentID] AS [ParentID], 
+[VewUserRole].[Title] AS [Title], 
+[VewUserRole].[Description] AS [Description], 
+[VewUserRole].[Url] AS [Url]
+FROM [dbo].[VewUserRole] AS [VewUserRole]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_AccecsUser_Pages" EntityType="Self.View_AccecsUser_Pages" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[View_AccecsUser_Pages].[Page_ID] AS [Page_ID], 
+[View_AccecsUser_Pages].[User_Name] AS [User_Name], 
+[View_AccecsUser_Pages].[Title] AS [Title], 
+[View_AccecsUser_Pages].[ParentMenuId] AS [ParentMenuId], 
+[View_AccecsUser_Pages].[Description] AS [Description], 
+[View_AccecsUser_Pages].[Member_ID] AS [Member_ID], 
+[View_AccecsUser_Pages].[Full_Name] AS [Full_Name], 
+[View_AccecsUser_Pages].[Team_NAME] AS [Team_NAME], 
+[View_AccecsUser_Pages].[Team_ID] AS [Team_ID]
+FROM [dbo].[View_AccecsUser_Pages] AS [View_AccecsUser_Pages]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_BookDetails" EntityType="Self.View_BookDetails" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[View_BookDetails].[Team_NAME] AS [Team_NAME], 
+[View_BookDetails].[ID] AS [ID], 
+[View_BookDetails].[Teams_ID] AS [Teams_ID], 
+[View_BookDetails].[Phone] AS [Phone], 
+[View_BookDetails].[Booking_Date] AS [Booking_Date], 
+[View_BookDetails].[WhoInsert] AS [WhoInsert], 
+[View_BookDetails].[InsertDate] AS [InsertDate], 
+[View_BookDetails].[ApproveBy] AS [ApproveBy], 
+[View_BookDetails].[ApproveDate] AS [ApproveDate], 
+[View_BookDetails].[WhoUpdate] AS [WhoUpdate], 
+[View_BookDetails].[UpdateDate] AS [UpdateDate], 
+[View_BookDetails].[WhoDelete] AS [WhoDelete], 
+[View_BookDetails].[DeleteDate] AS [DeleteDate], 
+[View_BookDetails].[RecordDelete] AS [RecordDelete], 
+[View_BookDetails].[Notes] AS [Notes], 
+[View_BookDetails].[Phone_1] AS [Phone_1], 
+[View_BookDetails].[Full_Name] AS [Full_Name]
+FROM [dbo].[View_BookDetails] AS [View_BookDetails]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_BookingReport" EntityType="Self.View_BookingReport" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[View_BookingReport].[Team_NAME] AS [Team_NAME], 
+[View_BookingReport].[ID] AS [ID], 
+[View_BookingReport].[Teams_ID] AS [Teams_ID], 
+[View_BookingReport].[Phone] AS [Phone], 
+[View_BookingReport].[Booking_Date] AS [Booking_Date], 
+[View_BookingReport].[WhoInsert] AS [WhoInsert], 
+[View_BookingReport].[InsertDate] AS [InsertDate], 
+[View_BookingReport].[ApproveBy] AS [ApproveBy], 
+[View_BookingReport].[ApproveDate] AS [ApproveDate], 
+[View_BookingReport].[WhoUpdate] AS [WhoUpdate], 
+[View_BookingReport].[UpdateDate] AS [UpdateDate], 
+[View_BookingReport].[WhoDelete] AS [WhoDelete], 
+[View_BookingReport].[DeleteDate] AS [DeleteDate], 
+[View_BookingReport].[RecordDelete] AS [RecordDelete], 
+[View_BookingReport].[Notes] AS [Notes]
+FROM [dbo].[View_BookingReport] AS [View_BookingReport]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_Master_MembeApproved" EntityType="Self.View_Master_MembeApproved" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[View_Master_MembeApproved].[ID] AS [ID], 
+[View_Master_MembeApproved].[JobName] AS [JobName], 
+[View_Master_MembeApproved].[Team_NAME] AS [Team_NAME], 
+[View_Master_MembeApproved].[Subscription] AS [Subscription], 
+[View_Master_MembeApproved].[Member_ID] AS [Member_ID], 
+[View_Master_MembeApproved].[Full_Name] AS [Full_Name], 
+[View_Master_MembeApproved].[Address] AS [Address], 
+[View_Master_MembeApproved].[Marital_Status] AS [Marital_Status], 
+[View_Master_MembeApproved].[Date_Birth] AS [Date_Birth], 
+[View_Master_MembeApproved].[Phone] AS [Phone], 
+[View_Master_MembeApproved].[Team_ID] AS [Team_ID], 
+[View_Master_MembeApproved].[Member_Type] AS [Member_Type], 
+[View_Master_MembeApproved].[Card_ID_ON] AS [Card_ID_ON], 
+[View_Master_MembeApproved].[Note] AS [Note], 
+[View_Master_MembeApproved].[Joining_Date] AS [Joining_Date], 
+[View_Master_MembeApproved].[WhoInsert] AS [WhoInsert], 
+[View_Master_MembeApproved].[InsertDate] AS [InsertDate], 
+[View_Master_MembeApproved].[ApproveBy] AS [ApproveBy], 
+[View_Master_MembeApproved].[ApproveDate] AS [ApproveDate], 
+[View_Master_MembeApproved].[WhoUpdate] AS [WhoUpdate], 
+[View_Master_MembeApproved].[UpdateDate] AS [UpdateDate], 
+[View_Master_MembeApproved].[WhoDelete] AS [WhoDelete], 
+[View_Master_MembeApproved].[DeleteDate] AS [DeleteDate], 
+[View_Master_MembeApproved].[ID_subscription] AS [ID_subscription], 
+[View_Master_MembeApproved].[subscription_] AS [subscription_]
+FROM [dbo].[View_Master_MembeApproved] AS [View_Master_MembeApproved]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_Master_MembeByApp" EntityType="Self.View_Master_MembeByApp" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[View_Master_MembeByApp].[ID] AS [ID], 
+[View_Master_MembeByApp].[JobName] AS [JobName], 
+[View_Master_MembeByApp].[Team_NAME] AS [Team_NAME], 
+[View_Master_MembeByApp].[Subscription] AS [Subscription], 
+[View_Master_MembeByApp].[Member_ID] AS [Member_ID], 
+[View_Master_MembeByApp].[Full_Name] AS [Full_Name], 
+[View_Master_MembeByApp].[Address] AS [Address], 
+[View_Master_MembeByApp].[Marital_Status] AS [Marital_Status], 
+[View_Master_MembeByApp].[Date_Birth] AS [Date_Birth], 
+[View_Master_MembeByApp].[Phone] AS [Phone], 
+[View_Master_MembeByApp].[Team_ID] AS [Team_ID], 
+[View_Master_MembeByApp].[Member_Type] AS [Member_Type], 
+[View_Master_MembeByApp].[Card_ID_ON] AS [Card_ID_ON], 
+[View_Master_MembeByApp].[Note] AS [Note], 
+[View_Master_MembeByApp].[Joining_Date] AS [Joining_Date], 
+[View_Master_MembeByApp].[WhoInsert] AS [WhoInsert], 
+[View_Master_MembeByApp].[InsertDate] AS [InsertDate], 
+[View_Master_MembeByApp].[ApproveBy] AS [ApproveBy], 
+[View_Master_MembeByApp].[ApproveDate] AS [ApproveDate], 
+[View_Master_MembeByApp].[WhoUpdate] AS [WhoUpdate], 
+[View_Master_MembeByApp].[UpdateDate] AS [UpdateDate], 
+[View_Master_MembeByApp].[WhoDelete] AS [WhoDelete], 
+[View_Master_MembeByApp].[DeleteDate] AS [DeleteDate], 
+[View_Master_MembeByApp].[ID_subscription] AS [ID_subscription], 
+[View_Master_MembeByApp].[PicUrl] AS [PicUrl], 
+[View_Master_MembeByApp].[ReturnY_N] AS [ReturnY_N], 
+[View_Master_MembeByApp].[Expr1] AS [Expr1]
+FROM [dbo].[View_Master_MembeByApp] AS [View_Master_MembeByApp]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_MemberReport" EntityType="Self.View_MemberReport" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[View_MemberReport].[ID] AS [ID], 
+[View_MemberReport].[JobName] AS [JobName], 
+[View_MemberReport].[Team_NAME] AS [Team_NAME], 
+[View_MemberReport].[Subscription] AS [Subscription], 
+[View_MemberReport].[Member_ID] AS [Member_ID], 
+[View_MemberReport].[Full_Name] AS [Full_Name], 
+[View_MemberReport].[Address] AS [Address], 
+[View_MemberReport].[Marital_Status] AS [Marital_Status], 
+[View_MemberReport].[Date_Birth] AS [Date_Birth], 
+[View_MemberReport].[Phone] AS [Phone], 
+[View_MemberReport].[Team_ID] AS [Team_ID], 
+[View_MemberReport].[Member_Type] AS [Member_Type], 
+[View_MemberReport].[Card_ID_ON] AS [Card_ID_ON], 
+[View_MemberReport].[Note] AS [Note], 
+[View_MemberReport].[Joining_Date] AS [Joining_Date], 
+[View_MemberReport].[WhoInsert] AS [WhoInsert], 
+[View_MemberReport].[InsertDate] AS [InsertDate], 
+[View_MemberReport].[ApproveBy] AS [ApproveBy], 
+[View_MemberReport].[ApproveDate] AS [ApproveDate], 
+[View_MemberReport].[WhoUpdate] AS [WhoUpdate], 
+[View_MemberReport].[UpdateDate] AS [UpdateDate], 
+[View_MemberReport].[WhoDelete] AS [WhoDelete], 
+[View_MemberReport].[DeleteDate] AS [DeleteDate], 
+[View_MemberReport].[ID_subscription] AS [ID_subscription], 
+[View_MemberReport].[subscription_] AS [subscription_]
+FROM [dbo].[View_MemberReport] AS [View_MemberReport]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_Page_Info" EntityType="Self.View_Page_Info" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[View_Page_Info].[Info_ID] AS [Info_ID], 
+[View_Page_Info].[FileName] AS [FileName], 
+[View_Page_Info].[FileTitle] AS [FileTitle], 
+[View_Page_Info].[Remarks] AS [Remarks]
+FROM [dbo].[View_Page_Info] AS [View_Page_Info]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_Payment_Member" EntityType="Self.View_Payment_Member" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[View_Payment_Member].[Subscriptions_ID] AS [Subscriptions_ID], 
+[View_Payment_Member].[Payment_Date] AS [Payment_Date], 
+[View_Payment_Member].[Subscriptions_Eyare] AS [Subscriptions_Eyare], 
+[View_Payment_Member].[ID_subscription] AS [ID_subscription], 
+[View_Payment_Member].[subscription] AS [subscription], 
+[View_Payment_Member].[PaymentY_N] AS [PaymentY_N], 
+[View_Payment_Member].[Note] AS [Note], 
+[View_Payment_Member].[WhoInsert] AS [WhoInsert], 
+[View_Payment_Member].[InsertDate] AS [InsertDate], 
+[View_Payment_Member].[ApproveBy] AS [ApproveBy], 
+[View_Payment_Member].[ApproveDate] AS [ApproveDate], 
+[View_Payment_Member].[WhoUpdate] AS [WhoUpdate], 
+[View_Payment_Member].[UpdateDate] AS [UpdateDate], 
+[View_Payment_Member].[WhoDelete] AS [WhoDelete], 
+[View_Payment_Member].[DeleteDate] AS [DeleteDate], 
+[View_Payment_Member].[PaymentReceiptPath] AS [PaymentReceiptPath], 
+[View_Payment_Member].[Member_ID] AS [Member_ID], 
+[View_Payment_Member].[Full_Name] AS [Full_Name], 
+[View_Payment_Member].[Phone] AS [Phone], 
+[View_Payment_Member].[Team_NAME] AS [Team_NAME], 
+[View_Payment_Member].[Team_ID] AS [Team_ID]
+FROM [dbo].[View_Payment_Member] AS [View_Payment_Member]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_PaymentTeame" EntityType="Self.View_PaymentTeame" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[View_PaymentTeame].[Subscriptions_ID] AS [Subscriptions_ID], 
+[View_PaymentTeame].[MemberIdOrTeamId] AS [MemberIdOrTeamId], 
+[View_PaymentTeame].[Payment_Date] AS [Payment_Date], 
+[View_PaymentTeame].[Subscriptions_Eyare] AS [Subscriptions_Eyare], 
+[View_PaymentTeame].[ID_subscription] AS [ID_subscription], 
+[View_PaymentTeame].[subscription] AS [subscription], 
+[View_PaymentTeame].[PaymentY_N] AS [PaymentY_N], 
+[View_PaymentTeame].[Note] AS [Note], 
+[View_PaymentTeame].[WhoInsert] AS [WhoInsert], 
+[View_PaymentTeame].[InsertDate] AS [InsertDate], 
+[View_PaymentTeame].[ApproveBy] AS [ApproveBy], 
+[View_PaymentTeame].[ApproveDate] AS [ApproveDate], 
+[View_PaymentTeame].[WhoUpdate] AS [WhoUpdate], 
+[View_PaymentTeame].[UpdateDate] AS [UpdateDate], 
+[View_PaymentTeame].[WhoDelete] AS [WhoDelete], 
+[View_PaymentTeame].[DeleteDate] AS [DeleteDate], 
+[View_PaymentTeame].[PaymentReceiptPath] AS [PaymentReceiptPath], 
+[View_PaymentTeame].[Team_NAME] AS [Team_NAME]
+FROM [dbo].[View_PaymentTeame] AS [View_PaymentTeame]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_SELECMember" EntityType="Self.View_SELECMember" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[View_SELECMember].[ID] AS [ID], 
+[View_SELECMember].[Member_ID] AS [Member_ID], 
+[View_SELECMember].[Full_Name] AS [Full_Name], 
+[View_SELECMember].[Address] AS [Address], 
+[View_SELECMember].[Marital_Status] AS [Marital_Status], 
+[View_SELECMember].[Date_Birth] AS [Date_Birth], 
+[View_SELECMember].[Phone] AS [Phone], 
+[View_SELECMember].[Team_ID] AS [Team_ID], 
+[View_SELECMember].[Member_Type] AS [Member_Type], 
+[View_SELECMember].[Card_ID_ON] AS [Card_ID_ON], 
+[View_SELECMember].[Note] AS [Note], 
+[View_SELECMember].[Joining_Date] AS [Joining_Date], 
+[View_SELECMember].[WhoInsert] AS [WhoInsert], 
+[View_SELECMember].[InsertDate] AS [InsertDate], 
+[View_SELECMember].[ApproveBy] AS [ApproveBy], 
+[View_SELECMember].[ApproveDate] AS [ApproveDate], 
+[View_SELECMember].[WhoUpdate] AS [WhoUpdate], 
+[View_SELECMember].[UpdateDate] AS [UpdateDate], 
+[View_SELECMember].[WhoDelete] AS [WhoDelete], 
+[View_SELECMember].[DeleteDate] AS [DeleteDate], 
+[View_SELECMember].[ID_subscription] AS [ID_subscription], 
+[View_SELECMember].[PicUrl] AS [PicUrl]
+FROM [dbo].[View_SELECMember] AS [View_SELECMember]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_SELECMemberSELERetern" EntityType="Self.View_SELECMemberSELERetern" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[View_SELECMemberSELERetern].[Member_ID_User] AS [Member_ID_User], 
+[View_SELECMemberSELERetern].[ID] AS [ID], 
+[View_SELECMemberSELERetern].[Member_ID] AS [Member_ID], 
+[View_SELECMemberSELERetern].[Full_Name] AS [Full_Name], 
+[View_SELECMemberSELERetern].[Address] AS [Address], 
+[View_SELECMemberSELERetern].[Marital_Status] AS [Marital_Status], 
+[View_SELECMemberSELERetern].[Date_Birth] AS [Date_Birth], 
+[View_SELECMemberSELERetern].[Phone] AS [Phone], 
+[View_SELECMemberSELERetern].[Team_ID] AS [Team_ID], 
+[View_SELECMemberSELERetern].[Member_Type] AS [Member_Type], 
+[View_SELECMemberSELERetern].[Card_ID_ON] AS [Card_ID_ON], 
+[View_SELECMemberSELERetern].[Note] AS [Note], 
+[View_SELECMemberSELERetern].[Joining_Date] AS [Joining_Date], 
+[View_SELECMemberSELERetern].[WhoInsert] AS [WhoInsert], 
+[View_SELECMemberSELERetern].[InsertDate] AS [InsertDate], 
+[View_SELECMemberSELERetern].[ApproveBy] AS [ApproveBy], 
+[View_SELECMemberSELERetern].[ApproveDate] AS [ApproveDate], 
+[View_SELECMemberSELERetern].[WhoUpdate] AS [WhoUpdate], 
+[View_SELECMemberSELERetern].[UpdateDate] AS [UpdateDate], 
+[View_SELECMemberSELERetern].[WhoDelete] AS [WhoDelete], 
+[View_SELECMemberSELERetern].[DeleteDate] AS [DeleteDate], 
+[View_SELECMemberSELERetern].[ID_subscription] AS [ID_subscription], 
+[View_SELECMemberSELERetern].[PicUrl] AS [PicUrl]
+FROM [dbo].[View_SELECMemberSELERetern] AS [View_SELECMemberSELERetern]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_TeamsApprove" EntityType="Self.View_TeamsApprove" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[View_TeamsApprove].[ID] AS [ID], 
+[View_TeamsApprove].[Team_ID] AS [Team_ID], 
+[View_TeamsApprove].[Team_NAME] AS [Team_NAME], 
+[View_TeamsApprove].[Joining_Date] AS [Joining_Date], 
+[View_TeamsApprove].[Note] AS [Note], 
+[View_TeamsApprove].[ID_subscription] AS [ID_subscription], 
+[View_TeamsApprove].[subscription] AS [subscription], 
+[View_TeamsApprove].[Subscription_] AS [Subscription_]
+FROM [dbo].[View_TeamsApprove] AS [View_TeamsApprove]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_User_Pages" EntityType="Self.View_User_Pages" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[View_User_Pages].[Member_ID] AS [Member_ID], 
+[View_User_Pages].[Full_Name] AS [Full_Name], 
+[View_User_Pages].[Team_ID] AS [Team_ID], 
+[View_User_Pages].[User_Name] AS [User_Name], 
+[View_User_Pages].[User_Pass] AS [User_Pass], 
+[View_User_Pages].[ID] AS [ID], 
+[View_User_Pages].[Team_NAME] AS [Team_NAME], 
+[View_User_Pages].[Lock_Account] AS [Lock_Account], 
+[View_User_Pages].[InActive] AS [InActive]
+FROM [dbo].[View_User_Pages] AS [View_User_Pages]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_User_ProfileUser_Pass" EntityType="Self.View_User_ProfileUser_Pass" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[View_User_ProfileUser_Pass].[Member_ID] AS [Member_ID], 
+[View_User_ProfileUser_Pass].[Full_Name] AS [Full_Name], 
+[View_User_ProfileUser_Pass].[Phone] AS [Phone], 
+[View_User_ProfileUser_Pass].[Team_NAME] AS [Team_NAME], 
+[View_User_ProfileUser_Pass].[User_Pass] AS [User_Pass], 
+[View_User_ProfileUser_Pass].[Team_ID] AS [Team_ID]
+FROM [dbo].[View_User_ProfileUser_Pass] AS [View_User_ProfileUser_Pass]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_UserProfile" EntityType="Self.View_UserProfile" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[View_UserProfile].[User_Name] AS [User_Name], 
+[View_UserProfile].[Member_ID] AS [Member_ID], 
+[View_UserProfile].[Full_Name] AS [Full_Name], 
+[View_UserProfile].[Phone] AS [Phone], 
+[View_UserProfile].[Team_NAME] AS [Team_NAME], 
+[View_UserProfile].[Title] AS [Title], 
+[View_UserProfile].[User_Pass] AS [User_Pass], 
+[View_UserProfile].[Team_ID] AS [Team_ID]
+FROM [dbo].[View_UserProfile] AS [View_UserProfile]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Club_DatabaseModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Menus">
+          <Key>
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="MenuId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParentMenuId" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Url" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Table_Booking_Details">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Teams_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Booking_Date" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="WhoInsert" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InsertDate" Type="DateTime" Precision="0" />
+          <Property Name="ApproveBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ApproveDate" Type="DateTime" Precision="0" />
+          <Property Name="WhoUpdate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="0" />
+          <Property Name="WhoDelete" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DeleteDate" Type="DateTime" Precision="0" />
+          <Property Name="RecordDelete" Type="Boolean" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Table_Contests">
+          <Key>
+            <PropertyRef Name="Contests_ID" />
+          </Key>
+          <Property Name="Contests_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name_Contests" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Table_Expenses">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date_Exchange" Type="DateTime" Precision="0" />
+          <Property Name="Amount" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="Approval_Date" Type="DateTime" Precision="0" />
+          <Property Name="Who_Approved_ID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Approval" Type="Boolean" />
+          <Property Name="Bill_PicUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Table_Job_status">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="subscription" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Table_Master_Member">
+          <Key>
+            <PropertyRef Name="Member_ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Member_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Full_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Marital_Status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Birth" Type="DateTime" Precision="0" />
+          <Property Name="Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Team_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Member_Type" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Card_ID_ON" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Joining_Date" Type="DateTime" Precision="0" />
+          <Property Name="WhoInsert" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InsertDate" Type="DateTime" Precision="0" />
+          <Property Name="ApproveBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ApproveDate" Type="DateTime" Precision="0" />
+          <Property Name="WhoUpdate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="0" />
+          <Property Name="WhoDelete" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DeleteDate" Type="DateTime" Precision="0" />
+          <Property Name="ID_subscription" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="PicUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ReturnY_N" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Table_Member_Details">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Member_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Datefrom" Type="DateTime" Precision="0" />
+          <Property Name="Dateto" Type="DateTime" Precision="0" />
+          <Property Name="PicUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Member_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PicUrl1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Table_Subscriptions">
+          <Key>
+            <PropertyRef Name="Subscriptions_ID" />
+          </Key>
+          <Property Name="Subscriptions_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberIdOrTeamId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Payment_Date" Type="DateTime" Precision="0" />
+          <Property Name="Subscriptions_Eyare" Type="Int32" />
+          <Property Name="ID_subscription" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="subscription" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="PaymentY_N" Type="Boolean" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WhoInsert" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InsertDate" Type="DateTime" Precision="0" />
+          <Property Name="ApproveBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ApproveDate" Type="DateTime" Precision="0" />
+          <Property Name="WhoUpdate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="0" />
+          <Property Name="WhoDelete" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DeleteDate" Type="DateTime" Precision="0" />
+          <Property Name="PaymentReceiptPath" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Table_Teams">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Team_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Team_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Joining_Date" Type="DateTime" Precision="0" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ID_subscription" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="WhoInsert" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InsertDate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Table_User_Pages">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Page_ID" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="From_Date" Type="DateTime" Precision="0" />
+          <Property Name="WhoInsert" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InsertDate" Type="DateTime" Precision="0" />
+          <Property Name="ApproveBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ApproveDate" Type="DateTime" Precision="0" />
+          <Property Name="WhoUpdate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="0" />
+          <Property Name="WhoDelete" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Table_User_Profile">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Member_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="User_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="User_Pass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Lock_Account" Type="Boolean" Nullable="false" />
+          <Property Name="InActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_User_Teams">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Teams_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_History_Contests">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Contests_ID" />
+            <PropertyRef Name="Member_ID" />
+            <PropertyRef Name="Team_ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Year" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Contests_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Member_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Team_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="VewPageInfo">
+          <Key>
+            <PropertyRef Name="Info_ID" />
+            <PropertyRef Name="FileName" />
+          </Key>
+          <Property Name="Info_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="FileName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FileTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Info" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AddedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="AddedDate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="VewUserRole">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="User_Name" />
+            <PropertyRef Name="Page_ID" />
+            <PropertyRef Name="MenuId" />
+            <PropertyRef Name="ParentID" />
+            <PropertyRef Name="Url" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="User_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Page_ID" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="MenuId" Type="Int32" Nullable="false" />
+          <Property Name="ParentID" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Url" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="View_AccecsUser_Pages">
+          <Key>
+            <PropertyRef Name="Page_ID" />
+            <PropertyRef Name="User_Name" />
+            <PropertyRef Name="ParentMenuId" />
+            <PropertyRef Name="Full_Name" />
+          </Key>
+          <Property Name="Page_ID" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="User_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ParentMenuId" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Member_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Full_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Team_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Team_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="View_BookDetails">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Teams_ID" />
+          </Key>
+          <Property Name="Team_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Teams_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Booking_Date" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="WhoInsert" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InsertDate" Type="DateTime" Precision="0" />
+          <Property Name="ApproveBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ApproveDate" Type="DateTime" Precision="0" />
+          <Property Name="WhoUpdate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="0" />
+          <Property Name="WhoDelete" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DeleteDate" Type="DateTime" Precision="0" />
+          <Property Name="RecordDelete" Type="Boolean" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Phone_1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Full_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="View_BookingReport">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Teams_ID" />
+          </Key>
+          <Property Name="Team_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Teams_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Booking_Date" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="WhoInsert" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InsertDate" Type="DateTime" Precision="0" />
+          <Property Name="ApproveBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ApproveDate" Type="DateTime" Precision="0" />
+          <Property Name="WhoUpdate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="0" />
+          <Property Name="WhoDelete" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DeleteDate" Type="DateTime" Precision="0" />
+          <Property Name="RecordDelete" Type="Boolean" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="View_Master_MembeApproved">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Member_ID" />
+            <PropertyRef Name="Full_Name" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="JobName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Team_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Subscription" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="Member_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Full_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Marital_Status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Birth" Type="DateTime" Precision="0" />
+          <Property Name="Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Team_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Member_Type" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Card_ID_ON" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Joining_Date" Type="DateTime" Precision="0" />
+          <Property Name="WhoInsert" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InsertDate" Type="DateTime" Precision="0" />
+          <Property Name="ApproveBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ApproveDate" Type="DateTime" Precision="0" />
+          <Property Name="WhoUpdate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="0" />
+          <Property Name="WhoDelete" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DeleteDate" Type="DateTime" Precision="0" />
+          <Property Name="ID_subscription" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="subscription_" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="View_Master_MembeByApp">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Member_ID" />
+            <PropertyRef Name="Full_Name" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="JobName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Team_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Subscription" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="Member_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Full_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Marital_Status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Birth" Type="DateTime" Precision="0" />
+          <Property Name="Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Team_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Member_Type" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Card_ID_ON" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Joining_Date" Type="DateTime" Precision="0" />
+          <Property Name="WhoInsert" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InsertDate" Type="DateTime" Precision="0" />
+          <Property Name="ApproveBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ApproveDate" Type="DateTime" Precision="0" />
+          <Property Name="WhoUpdate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="0" />
+          <Property Name="WhoDelete" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DeleteDate" Type="DateTime" Precision="0" />
+          <Property Name="ID_subscription" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="PicUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ReturnY_N" Type="Boolean" />
+          <Property Name="Expr1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="View_MemberReport">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Member_ID" />
+            <PropertyRef Name="Full_Name" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="JobName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Team_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Subscription" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="Member_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Full_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Marital_Status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Birth" Type="DateTime" Precision="0" />
+          <Property Name="Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Team_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Member_Type" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Card_ID_ON" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Joining_Date" Type="DateTime" Precision="0" />
+          <Property Name="WhoInsert" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InsertDate" Type="DateTime" Precision="0" />
+          <Property Name="ApproveBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ApproveDate" Type="DateTime" Precision="0" />
+          <Property Name="WhoUpdate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="0" />
+          <Property Name="WhoDelete" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DeleteDate" Type="DateTime" Precision="0" />
+          <Property Name="ID_subscription" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="subscription_" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="View_Page_Info">
+          <Key>
+            <PropertyRef Name="Info_ID" />
+            <PropertyRef Name="FileName" />
+          </Key>
+          <Property Name="Info_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="FileName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FileTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="View_Payment_Member">
+          <Key>
+            <PropertyRef Name="Subscriptions_ID" />
+            <PropertyRef Name="Member_ID" />
+            <PropertyRef Name="Full_Name" />
+          </Key>
+          <Property Name="Subscriptions_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Payment_Date" Type="DateTime" Precision="0" />
+          <Property Name="Subscriptions_Eyare" Type="Int32" />
+          <Property Name="ID_subscription" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="subscription" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="PaymentY_N" Type="Boolean" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WhoInsert" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InsertDate" Type="DateTime" Precision="0" />
+          <Property Name="ApproveBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ApproveDate" Type="DateTime" Precision="0" />
+          <Property Name="WhoUpdate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="0" />
+          <Property Name="WhoDelete" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DeleteDate" Type="DateTime" Precision="0" />
+          <Property Name="PaymentReceiptPath" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Member_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Full_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Team_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Team_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="View_PaymentTeame">
+          <Key>
+            <PropertyRef Name="Subscriptions_ID" />
+          </Key>
+          <Property Name="Subscriptions_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="MemberIdOrTeamId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Payment_Date" Type="DateTime" Precision="0" />
+          <Property Name="Subscriptions_Eyare" Type="Int32" />
+          <Property Name="ID_subscription" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="subscription" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="PaymentY_N" Type="Boolean" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WhoInsert" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InsertDate" Type="DateTime" Precision="0" />
+          <Property Name="ApproveBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ApproveDate" Type="DateTime" Precision="0" />
+          <Property Name="WhoUpdate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="0" />
+          <Property Name="WhoDelete" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DeleteDate" Type="DateTime" Precision="0" />
+          <Property Name="PaymentReceiptPath" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Team_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="View_SELECMember">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Member_ID" />
+            <PropertyRef Name="Full_Name" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Member_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Full_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Marital_Status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Birth" Type="DateTime" Precision="0" />
+          <Property Name="Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Team_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Member_Type" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Card_ID_ON" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Joining_Date" Type="DateTime" Precision="0" />
+          <Property Name="WhoInsert" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InsertDate" Type="DateTime" Precision="0" />
+          <Property Name="ApproveBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ApproveDate" Type="DateTime" Precision="0" />
+          <Property Name="WhoUpdate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="0" />
+          <Property Name="WhoDelete" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DeleteDate" Type="DateTime" Precision="0" />
+          <Property Name="ID_subscription" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="PicUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="View_SELECMemberSELERetern">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Member_ID" />
+            <PropertyRef Name="Full_Name" />
+          </Key>
+          <Property Name="Member_ID_User" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Member_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Full_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Marital_Status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Birth" Type="DateTime" Precision="0" />
+          <Property Name="Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Team_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Member_Type" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Card_ID_ON" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Joining_Date" Type="DateTime" Precision="0" />
+          <Property Name="WhoInsert" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InsertDate" Type="DateTime" Precision="0" />
+          <Property Name="ApproveBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ApproveDate" Type="DateTime" Precision="0" />
+          <Property Name="WhoUpdate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="0" />
+          <Property Name="WhoDelete" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DeleteDate" Type="DateTime" Precision="0" />
+          <Property Name="ID_subscription" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="PicUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="View_TeamsApprove">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="ID_subscription" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Team_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Team_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Joining_Date" Type="DateTime" Precision="0" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ID_subscription" Type="Int32" Nullable="false" />
+          <Property Name="subscription" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Subscription_" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="View_User_Pages">
+          <Key>
+            <PropertyRef Name="Member_ID" />
+            <PropertyRef Name="Full_Name" />
+            <PropertyRef Name="User_Name" />
+            <PropertyRef Name="User_Pass" />
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Lock_Account" />
+            <PropertyRef Name="InActive" />
+          </Key>
+          <Property Name="Member_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Full_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Team_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="User_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="User_Pass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Team_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Lock_Account" Type="Boolean" Nullable="false" />
+          <Property Name="InActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="View_User_ProfileUser_Pass">
+          <Key>
+            <PropertyRef Name="User_Pass" />
+          </Key>
+          <Property Name="Member_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Full_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Team_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="User_Pass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Team_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="View_UserProfile">
+          <Key>
+            <PropertyRef Name="User_Name" />
+          </Key>
+          <Property Name="User_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Member_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Full_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Team_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="User_Pass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Team_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="Club_DatabaseEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Menus" EntityType="Self.Menus" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Table_Booking_Details" EntityType="Self.Table_Booking_Details" />
+          <EntitySet Name="Table_Contests" EntityType="Self.Table_Contests" />
+          <EntitySet Name="Table_Expenses" EntityType="Self.Table_Expenses" />
+          <EntitySet Name="Table_Job_status" EntityType="Self.Table_Job_status" />
+          <EntitySet Name="Table_Master_Member" EntityType="Self.Table_Master_Member" />
+          <EntitySet Name="Table_Member_Details" EntityType="Self.Table_Member_Details" />
+          <EntitySet Name="Table_Subscriptions" EntityType="Self.Table_Subscriptions" />
+          <EntitySet Name="Table_Teams" EntityType="Self.Table_Teams" />
+          <EntitySet Name="Table_User_Pages" EntityType="Self.Table_User_Pages" />
+          <EntitySet Name="Table_User_Profile" EntityType="Self.Table_User_Profile" />
+          <EntitySet Name="Table_User_Teams" EntityType="Self.Table_User_Teams" />
+          <EntitySet Name="Table_History_Contests" EntityType="Self.Table_History_Contests" />
+          <EntitySet Name="VewPageInfo" EntityType="Self.VewPageInfo" />
+          <EntitySet Name="VewUserRole" EntityType="Self.VewUserRole" />
+          <EntitySet Name="View_AccecsUser_Pages" EntityType="Self.View_AccecsUser_Pages" />
+          <EntitySet Name="View_BookDetails" EntityType="Self.View_BookDetails" />
+          <EntitySet Name="View_BookingReport" EntityType="Self.View_BookingReport" />
+          <EntitySet Name="View_Master_MembeApproved" EntityType="Self.View_Master_MembeApproved" />
+          <EntitySet Name="View_Master_MembeByApp" EntityType="Self.View_Master_MembeByApp" />
+          <EntitySet Name="View_MemberReport" EntityType="Self.View_MemberReport" />
+          <EntitySet Name="View_Page_Info" EntityType="Self.View_Page_Info" />
+          <EntitySet Name="View_Payment_Member" EntityType="Self.View_Payment_Member" />
+          <EntitySet Name="View_PaymentTeame" EntityType="Self.View_PaymentTeame" />
+          <EntitySet Name="View_SELECMember" EntityType="Self.View_SELECMember" />
+          <EntitySet Name="View_SELECMemberSELERetern" EntityType="Self.View_SELECMemberSELERetern" />
+          <EntitySet Name="View_TeamsApprove" EntityType="Self.View_TeamsApprove" />
+          <EntitySet Name="View_User_Pages" EntityType="Self.View_User_Pages" />
+          <EntitySet Name="View_User_ProfileUser_Pass" EntityType="Self.View_User_ProfileUser_Pass" />
+          <EntitySet Name="View_UserProfile" EntityType="Self.View_UserProfile" />
+          <FunctionImport Name="SP__Booking_Date" ReturnType="Collection(Club_DatabaseModel1.SP__Booking_Date_Result)">
+            <Parameter Name="Action" Mode="In" Type="String" />
+            <Parameter Name="ID" Mode="In" Type="Decimal" />
+            <Parameter Name="Team_ID" Mode="In" Type="String" />
+            <Parameter Name="Phonen" Mode="In" Type="String" />
+            <Parameter Name="Booking_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="WhoInsert" Mode="In" Type="String" />
+            <Parameter Name="InsertDatee" Mode="In" Type="DateTime" />
+            <Parameter Name="ApproveBy" Mode="In" Type="String" />
+            <Parameter Name="ApproveDate" Mode="In" Type="DateTime" />
+            <Parameter Name="WhoUpdate" Mode="In" Type="String" />
+            <Parameter Name="UpdateDate" Mode="In" Type="DateTime" />
+            <Parameter Name="WhoDelete" Mode="In" Type="String" />
+            <Parameter Name="DeleteDate" Mode="In" Type="DateTime" />
+            <Parameter Name="RecordDelete" Mode="In" Type="Boolean" />
+            <Parameter Name="Notes" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(Club_DatabaseModel1.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(Club_DatabaseModel1.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Master_Member" ReturnType="Collection(Club_DatabaseModel1.SP_Master_Member_Result)">
+            <Parameter Name="Action" Mode="In" Type="String" />
+            <Parameter Name="ID" Mode="In" Type="Decimal" />
+            <Parameter Name="Member_ID" Mode="In" Type="String" />
+            <Parameter Name="Full_Name" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="Marital_Status" Mode="In" Type="String" />
+            <Parameter Name="Date_Birth" Mode="In" Type="DateTime" />
+            <Parameter Name="Phone" Mode="In" Type="String" />
+            <Parameter Name="PicUrl" Mode="In" Type="String" />
+            <Parameter Name="Team_ID" Mode="In" Type="String" />
+            <Parameter Name="Member_Type" Mode="In" Type="String" />
+            <Parameter Name="Card_ID_ON" Mode="In" Type="Decimal" />
+            <Parameter Name="Note" Mode="In" Type="String" />
+            <Parameter Name="Joining_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="ID_subscription" Mode="In" Type="Decimal" />
+            <Parameter Name="subscription" Mode="In" Type="String" />
+            <Parameter Name="JobName" Mode="In" Type="String" />
+            <Parameter Name="Team_NAME" Mode="In" Type="String" />
+            <Parameter Name="WhoInsert" Mode="In" Type="String" />
+            <Parameter Name="InsertDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ApproveBy" Mode="In" Type="String" />
+            <Parameter Name="ApproveDate" Mode="In" Type="DateTime" />
+            <Parameter Name="WhoUpdate" Mode="In" Type="String" />
+            <Parameter Name="UpdateDate" Mode="In" Type="DateTime" />
+            <Parameter Name="WhoDelete" Mode="In" Type="String" />
+            <Parameter Name="DeleteDate" Mode="In" Type="DateTime" />
+            <Parameter Name="RecordDelete" Mode="In" Type="Boolean" />
+            <Parameter Name="ReturnY_N" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="SP_New_Team" ReturnType="Collection(Club_DatabaseModel1.SP_New_Team_Result)">
+            <Parameter Name="Action" Mode="In" Type="String" />
+            <Parameter Name="ID" Mode="In" Type="Decimal" />
+            <Parameter Name="Team_ID" Mode="In" Type="String" />
+            <Parameter Name="Team_NAME" Mode="In" Type="String" />
+            <Parameter Name="Joining_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="Note" Mode="In" Type="String" />
+            <Parameter Name="WhoInsert" Mode="In" Type="String" />
+            <Parameter Name="InsertDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_sign_in" ReturnType="Collection(Club_DatabaseModel1.sp_sign_in_Result)">
+            <Parameter Name="Action" Mode="In" Type="String" />
+            <Parameter Name="User_Name" Mode="In" Type="String" />
+            <Parameter Name="User_Pass" Mode="In" Type="String" />
+            <Parameter Name="InActive" Mode="In" Type="Boolean" />
+            <Parameter Name="Lock_Account" Mode="In" Type="Boolean" />
+            <Parameter Name="Member_ID" Mode="In" Type="String" />
+            <Parameter Name="Full_Name" Mode="In" Type="String" />
+            <Parameter Name="Team_ID" Mode="In" Type="String" />
+            <Parameter Name="ID" Mode="In" Type="String" />
+            <Parameter Name="From_Datee" Mode="In" Type="DateTime" />
+            <Parameter Name="Page_ID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Subscriptions" ReturnType="Collection(Club_DatabaseModel1.SP_Subscriptions_Result)">
+            <Parameter Name="Action" Mode="In" Type="String" />
+            <Parameter Name="Subscriptions_ID" Mode="In" Type="Decimal" />
+            <Parameter Name="Member_ID" Mode="In" Type="String" />
+            <Parameter Name="MemberIdOrTeamId" Mode="In" Type="String" />
+            <Parameter Name="Payment_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="Subscriptions_Eyare" Mode="In" Type="Int32" />
+            <Parameter Name="ID_subscription" Mode="In" Type="Decimal" />
+            <Parameter Name="subscription" Mode="In" Type="String" />
+            <Parameter Name="PaymentY_N" Mode="In" Type="Boolean" />
+            <Parameter Name="Note" Mode="In" Type="String" />
+            <Parameter Name="WhoInsert" Mode="In" Type="String" />
+            <Parameter Name="InsertDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ApproveBy" Mode="In" Type="String" />
+            <Parameter Name="ApproveDate" Mode="In" Type="DateTime" />
+            <Parameter Name="WhoUpdate" Mode="In" Type="String" />
+            <Parameter Name="UpdateDate" Mode="In" Type="DateTime" />
+            <Parameter Name="WhoDelete" Mode="In" Type="String" />
+            <Parameter Name="DeleteDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ID" Mode="In" Type="Decimal" />
+            <Parameter Name="Team_ID" Mode="In" Type="String" />
+            <Parameter Name="Team_NAME" Mode="In" Type="String" />
+            <Parameter Name="Joining_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="PaymentReceiptPath" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="sp_User_Profile" ReturnType="Collection(Club_DatabaseModel1.sp_User_Profile_Result)">
+            <Parameter Name="Action" Mode="In" Type="String" />
+            <Parameter Name="ID" Mode="In" Type="Decimal" />
+            <Parameter Name="Member_ID" Mode="In" Type="String" />
+            <Parameter Name="User_Name" Mode="In" Type="String" />
+            <Parameter Name="User_Pass" Mode="In" Type="String" />
+            <Parameter Name="Lock_Account" Mode="In" Type="Boolean" />
+            <Parameter Name="InActive" Mode="In" Type="Boolean" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="SP__Booking_Date_Result">
+          <Property Type="String" Name="Team_NAME" Nullable="true" MaxLength="255" />
+          <Property Type="Decimal" Name="ID" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="Teams_ID" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Booking_Date" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="WhoInsert" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="InsertDate" Nullable="true" />
+          <Property Type="String" Name="ApproveBy" Nullable="true" MaxLength="20" />
+          <Property Type="DateTime" Name="ApproveDate" Nullable="true" />
+          <Property Type="String" Name="WhoUpdate" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="UpdateDate" Nullable="true" />
+          <Property Type="String" Name="WhoDelete" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="DeleteDate" Nullable="true" />
+          <Property Type="Boolean" Name="RecordDelete" Nullable="true" />
+          <Property Type="String" Name="Notes" Nullable="true" />
+          <Property Type="String" Name="Phone_1" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Full_Name" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SP_Master_Member_Result">
+          <Property Type="Decimal" Name="ID" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="Member_ID" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Full_Name" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Marital_Status" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="Date_Birth" Nullable="true" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Team_ID" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Member_Type" Nullable="true" MaxLength="100" />
+          <Property Type="Decimal" Name="Card_ID_ON" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="Note" Nullable="true" />
+          <Property Type="DateTime" Name="Joining_Date" Nullable="true" />
+          <Property Type="String" Name="WhoInsert" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="InsertDate" Nullable="true" />
+          <Property Type="String" Name="ApproveBy" Nullable="true" MaxLength="20" />
+          <Property Type="DateTime" Name="ApproveDate" Nullable="true" />
+          <Property Type="String" Name="WhoUpdate" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="UpdateDate" Nullable="true" />
+          <Property Type="String" Name="WhoDelete" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="DeleteDate" Nullable="true" />
+          <Property Type="Decimal" Name="ID_subscription" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="PicUrl" Nullable="true" MaxLength="100" />
+          <Property Type="Boolean" Name="ReturnY_N" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_New_Team_Result">
+          <Property Type="Decimal" Name="ID" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="Team_ID" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Team_NAME" Nullable="true" MaxLength="255" />
+          <Property Type="DateTime" Name="Joining_Date" Nullable="true" />
+          <Property Type="String" Name="Note" Nullable="true" />
+          <Property Type="Int32" Name="ID_subscription" Nullable="false" />
+          <Property Type="String" Name="WhoInsert" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="InsertDate" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_sign_in_Result">
+          <Property Type="String" Name="User_Name" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="User_Pass" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SP_Subscriptions_Result">
+          <Property Type="Decimal" Name="Subscriptions_ID" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="MemberIdOrTeamId" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="Payment_Date" Nullable="true" />
+          <Property Type="Int32" Name="Subscriptions_Eyare" Nullable="true" />
+          <Property Type="Decimal" Name="ID_subscription" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="subscription" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Boolean" Name="PaymentY_N" Nullable="true" />
+          <Property Type="String" Name="Note" Nullable="true" />
+          <Property Type="String" Name="WhoInsert" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="InsertDate" Nullable="true" />
+          <Property Type="String" Name="ApproveBy" Nullable="true" MaxLength="20" />
+          <Property Type="DateTime" Name="ApproveDate" Nullable="true" />
+          <Property Type="String" Name="WhoUpdate" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="UpdateDate" Nullable="true" />
+          <Property Type="String" Name="WhoDelete" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="DeleteDate" Nullable="true" />
+          <Property Type="String" Name="PaymentReceiptPath" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="sp_User_Profile_Result">
+          <Property Type="Decimal" Name="ID" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="Member_ID" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="User_Name" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="User_Pass" Nullable="false" MaxLength="50" />
+          <Property Type="Boolean" Name="Lock_Account" Nullable="false" />
+          <Property Type="Boolean" Name="InActive" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Club_DatabaseModel1StoreContainer" CdmEntityContainer="Club_DatabaseEntities2">
+          <EntitySetMapping Name="Menus">
+            <EntityTypeMapping TypeName="Club_DatabaseModel1.Menus">
+              <MappingFragment StoreEntitySet="Menus">
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+                <ScalarProperty Name="ParentMenuId" ColumnName="ParentMenuId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Club_DatabaseModel1.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Booking_Details">
+            <EntityTypeMapping TypeName="Club_DatabaseModel1.Table_Booking_Details">
+              <MappingFragment StoreEntitySet="Table_Booking_Details">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Teams_ID" ColumnName="Teams_ID" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Booking_Date" ColumnName="Booking_Date" />
+                <ScalarProperty Name="WhoInsert" ColumnName="WhoInsert" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="ApproveBy" ColumnName="ApproveBy" />
+                <ScalarProperty Name="ApproveDate" ColumnName="ApproveDate" />
+                <ScalarProperty Name="WhoUpdate" ColumnName="WhoUpdate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="WhoDelete" ColumnName="WhoDelete" />
+                <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
+                <ScalarProperty Name="RecordDelete" ColumnName="RecordDelete" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Contests">
+            <EntityTypeMapping TypeName="Club_DatabaseModel1.Table_Contests">
+              <MappingFragment StoreEntitySet="Table_Contests">
+                <ScalarProperty Name="Contests_ID" ColumnName="Contests_ID" />
+                <ScalarProperty Name="Name_Contests" ColumnName="Name_Contests" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Expenses">
+            <EntityTypeMapping TypeName="Club_DatabaseModel1.Table_Expenses">
+              <MappingFragment StoreEntitySet="Table_Expenses">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Date_Exchange" ColumnName="Date_Exchange" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Approval_Date" ColumnName="Approval_Date" />
+                <ScalarProperty Name="Who_Approved_ID" ColumnName="Who_Approved_ID" />
+                <ScalarProperty Name="Approval" ColumnName="Approval" />
+                <ScalarProperty Name="Bill_PicUrl" ColumnName="Bill_PicUrl" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Job_status">
+            <EntityTypeMapping TypeName="Club_DatabaseModel1.Table_Job_status">
+              <MappingFragment StoreEntitySet="Table_Job status">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="JobName" ColumnName="JobName" />
+                <ScalarProperty Name="subscription" ColumnName="subscription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Master_Member">
+            <EntityTypeMapping TypeName="Club_DatabaseModel1.Table_Master_Member">
+              <MappingFragment StoreEntitySet="Table_Master_Member">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Member_ID" ColumnName="Member_ID" />
+                <ScalarProperty Name="Full_Name" ColumnName="Full_Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Marital_Status" ColumnName="Marital_Status" />
+                <ScalarProperty Name="Date_Birth" ColumnName="Date_Birth" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Team_ID" ColumnName="Team_ID" />
+                <ScalarProperty Name="Member_Type" ColumnName="Member_Type" />
+                <ScalarProperty Name="Card_ID_ON" ColumnName="Card_ID_ON" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Joining_Date" ColumnName="Joining_Date" />
+                <ScalarProperty Name="WhoInsert" ColumnName="WhoInsert" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="ApproveBy" ColumnName="ApproveBy" />
+                <ScalarProperty Name="ApproveDate" ColumnName="ApproveDate" />
+                <ScalarProperty Name="WhoUpdate" ColumnName="WhoUpdate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="WhoDelete" ColumnName="WhoDelete" />
+                <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
+                <ScalarProperty Name="ID_subscription" ColumnName="ID_subscription" />
+                <ScalarProperty Name="PicUrl" ColumnName="PicUrl" />
+                <ScalarProperty Name="ReturnY_N" ColumnName="ReturnY_N" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Member_Details">
+            <EntityTypeMapping TypeName="Club_DatabaseModel1.Table_Member_Details">
+              <MappingFragment StoreEntitySet="Table_Member_Details">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Member_ID" ColumnName="Member_ID" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="Datefrom" ColumnName="Datefrom" />
+                <ScalarProperty Name="Dateto" ColumnName="Dateto" />
+                <ScalarProperty Name="PicUrl" ColumnName="PicUrl" />
+                <ScalarProperty Name="Member_Type" ColumnName="Member_Type" />
+                <ScalarProperty Name="PicUrl1" ColumnName="PicUrl1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Subscriptions">
+            <EntityTypeMapping TypeName="Club_DatabaseModel1.Table_Subscriptions">
+              <MappingFragment StoreEntitySet="Table_Subscriptions">
+                <ScalarProperty Name="Subscriptions_ID" ColumnName="Subscriptions_ID" />
+                <ScalarProperty Name="MemberIdOrTeamId" ColumnName="MemberIdOrTeamId" />
+                <ScalarProperty Name="Payment_Date" ColumnName="Payment_Date" />
+                <ScalarProperty Name="Subscriptions_Eyare" ColumnName="Subscriptions_Eyare" />
+                <ScalarProperty Name="ID_subscription" ColumnName="ID_subscription" />
+                <ScalarProperty Name="subscription" ColumnName="subscription" />
+                <ScalarProperty Name="PaymentY_N" ColumnName="PaymentY_N" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="WhoInsert" ColumnName="WhoInsert" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="ApproveBy" ColumnName="ApproveBy" />
+                <ScalarProperty Name="ApproveDate" ColumnName="ApproveDate" />
+                <ScalarProperty Name="WhoUpdate" ColumnName="WhoUpdate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="WhoDelete" ColumnName="WhoDelete" />
+                <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
+                <ScalarProperty Name="PaymentReceiptPath" ColumnName="PaymentReceiptPath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Teams">
+            <EntityTypeMapping TypeName="Club_DatabaseModel1.Table_Teams">
+              <MappingFragment StoreEntitySet="Table_Teams">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Team_ID" ColumnName="Team_ID" />
+                <ScalarProperty Name="Team_NAME" ColumnName="Team_NAME" />
+                <ScalarProperty Name="Joining_Date" ColumnName="Joining_Date" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="ID_subscription" ColumnName="ID_subscription" />
+                <ScalarProperty Name="WhoInsert" ColumnName="WhoInsert" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_User_Pages">
+            <EntityTypeMapping TypeName="Club_DatabaseModel1.Table_User_Pages">
+              <MappingFragment StoreEntitySet="Table_User_Pages">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+                <ScalarProperty Name="Page_ID" ColumnName="Page_ID" />
+                <ScalarProperty Name="From_Date" ColumnName="From_Date" />
+                <ScalarProperty Name="WhoInsert" ColumnName="WhoInsert" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="ApproveBy" ColumnName="ApproveBy" />
+                <ScalarProperty Name="ApproveDate" ColumnName="ApproveDate" />
+                <ScalarProperty Name="WhoUpdate" ColumnName="WhoUpdate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="WhoDelete" ColumnName="WhoDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_User_Profile">
+            <EntityTypeMapping TypeName="Club_DatabaseModel1.Table_User_Profile">
+              <MappingFragment StoreEntitySet="Table_User_Profile">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Member_ID" ColumnName="Member_ID" />
+                <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+                <ScalarProperty Name="User_Pass" ColumnName="User_Pass" />
+                <ScalarProperty Name="Lock_Account" ColumnName="Lock_Account" />
+                <ScalarProperty Name="InActive" ColumnName="InActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_User_Teams">
+            <EntityTypeMapping TypeName="Club_DatabaseModel1.Table_User_Teams">
+              <MappingFragment StoreEntitySet="Table_User_Teams">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+                <ScalarProperty Name="Teams_ID" ColumnName="Teams_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_History_Contests">
+            <EntityTypeMapping TypeName="Club_DatabaseModel1.Table_History_Contests">
+              <MappingFragment StoreEntitySet="Table_History_Contests">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Contests_ID" ColumnName="Contests_ID" />
+                <ScalarProperty Name="Member_ID" ColumnName="Member_ID" />
+                <ScalarProperty Name="Team_ID" ColumnName="Team_ID" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VewPageInfo">
+            <EntityTypeMapping TypeName="Club_DatabaseModel1.VewPageInfo">
+              <MappingFragment StoreEntitySet="VewPageInfo">
+                <ScalarProperty Name="Info_ID" ColumnName="Info_ID" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="FileTitle" ColumnName="FileTitle" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="Info" ColumnName="Info" />
+                <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+                <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VewUserRole">
+            <EntityTypeMapping TypeName="Club_DatabaseModel1.VewUserRole">
+              <MappingFragment StoreEntitySet="VewUserRole">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+                <ScalarProperty Name="Page_ID" ColumnName="Page_ID" />
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_AccecsUser_Pages">
+            <EntityTypeMapping TypeName="Club_DatabaseModel1.View_AccecsUser_Pages">
+              <MappingFragment StoreEntitySet="View_AccecsUser_Pages">
+                <ScalarProperty Name="Page_ID" ColumnName="Page_ID" />
+                <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ParentMenuId" ColumnName="ParentMenuId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Member_ID" ColumnName="Member_ID" />
+                <ScalarProperty Name="Full_Name" ColumnName="Full_Name" />
+                <ScalarProperty Name="Team_NAME" ColumnName="Team_NAME" />
+                <ScalarProperty Name="Team_ID" ColumnName="Team_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_BookDetails">
+            <EntityTypeMapping TypeName="Club_DatabaseModel1.View_BookDetails">
+              <MappingFragment StoreEntitySet="View_BookDetails">
+                <ScalarProperty Name="Team_NAME" ColumnName="Team_NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Teams_ID" ColumnName="Teams_ID" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Booking_Date" ColumnName="Booking_Date" />
+                <ScalarProperty Name="WhoInsert" ColumnName="WhoInsert" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="ApproveBy" ColumnName="ApproveBy" />
+                <ScalarProperty Name="ApproveDate" ColumnName="ApproveDate" />
+                <ScalarProperty Name="WhoUpdate" ColumnName="WhoUpdate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="WhoDelete" ColumnName="WhoDelete" />
+                <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
+                <ScalarProperty Name="RecordDelete" ColumnName="RecordDelete" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Phone_1" ColumnName="Phone_1" />
+                <ScalarProperty Name="Full_Name" ColumnName="Full_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_BookingReport">
+            <EntityTypeMapping TypeName="Club_DatabaseModel1.View_BookingReport">
+              <MappingFragment StoreEntitySet="View_BookingReport">
+                <ScalarProperty Name="Team_NAME" ColumnName="Team_NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Teams_ID" ColumnName="Teams_ID" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Booking_Date" ColumnName="Booking_Date" />
+                <ScalarProperty Name="WhoInsert" ColumnName="WhoInsert" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="ApproveBy" ColumnName="ApproveBy" />
+                <ScalarProperty Name="ApproveDate" ColumnName="ApproveDate" />
+                <ScalarProperty Name="WhoUpdate" ColumnName="WhoUpdate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="WhoDelete" ColumnName="WhoDelete" />
+                <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
+                <ScalarProperty Name="RecordDelete" ColumnName="RecordDelete" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Master_MembeApproved">
+            <EntityTypeMapping TypeName="Club_DatabaseModel1.View_Master_MembeApproved">
+              <MappingFragment StoreEntitySet="View_Master_MembeApproved">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="JobName" ColumnName="JobName" />
+                <ScalarProperty Name="Team_NAME" ColumnName="Team_NAME" />
+                <ScalarProperty Name="Subscription" ColumnName="Subscription" />
+                <ScalarProperty Name="Member_ID" ColumnName="Member_ID" />
+                <ScalarProperty Name="Full_Name" ColumnName="Full_Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Marital_Status" ColumnName="Marital_Status" />
+                <ScalarProperty Name="Date_Birth" ColumnName="Date_Birth" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Team_ID" ColumnName="Team_ID" />
+                <ScalarProperty Name="Member_Type" ColumnName="Member_Type" />
+                <ScalarProperty Name="Card_ID_ON" ColumnName="Card_ID_ON" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Joining_Date" ColumnName="Joining_Date" />
+                <ScalarProperty Name="WhoInsert" ColumnName="WhoInsert" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="ApproveBy" ColumnName="ApproveBy" />
+                <ScalarProperty Name="ApproveDate" ColumnName="ApproveDate" />
+                <ScalarProperty Name="WhoUpdate" ColumnName="WhoUpdate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="WhoDelete" ColumnName="WhoDelete" />
+                <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
+                <ScalarProperty Name="ID_subscription" ColumnName="ID_subscription" />
+                <ScalarProperty Name="subscription_" ColumnName="subscription_" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Master_MembeByApp">
+            <EntityTypeMapping TypeName="Club_DatabaseModel1.View_Master_MembeByApp">
+              <MappingFragment StoreEntitySet="View_Master_MembeByApp">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="JobName" ColumnName="JobName" />
+                <ScalarProperty Name="Team_NAME" ColumnName="Team_NAME" />
+                <ScalarProperty Name="Subscription" ColumnName="Subscription" />
+                <ScalarProperty Name="Member_ID" ColumnName="Member_ID" />
+                <ScalarProperty Name="Full_Name" ColumnName="Full_Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Marital_Status" ColumnName="Marital_Status" />
+                <ScalarProperty Name="Date_Birth" ColumnName="Date_Birth" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Team_ID" ColumnName="Team_ID" />
+                <ScalarProperty Name="Member_Type" ColumnName="Member_Type" />
+                <ScalarProperty Name="Card_ID_ON" ColumnName="Card_ID_ON" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Joining_Date" ColumnName="Joining_Date" />
+                <ScalarProperty Name="WhoInsert" ColumnName="WhoInsert" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="ApproveBy" ColumnName="ApproveBy" />
+                <ScalarProperty Name="ApproveDate" ColumnName="ApproveDate" />
+                <ScalarProperty Name="WhoUpdate" ColumnName="WhoUpdate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="WhoDelete" ColumnName="WhoDelete" />
+                <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
+                <ScalarProperty Name="ID_subscription" ColumnName="ID_subscription" />
+                <ScalarProperty Name="PicUrl" ColumnName="PicUrl" />
+                <ScalarProperty Name="ReturnY_N" ColumnName="ReturnY_N" />
+                <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_MemberReport">
+            <EntityTypeMapping TypeName="Club_DatabaseModel1.View_MemberReport">
+              <MappingFragment StoreEntitySet="View_MemberReport">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="JobName" ColumnName="JobName" />
+                <ScalarProperty Name="Team_NAME" ColumnName="Team_NAME" />
+                <ScalarProperty Name="Subscription" ColumnName="Subscription" />
+                <ScalarProperty Name="Member_ID" ColumnName="Member_ID" />
+                <ScalarProperty Name="Full_Name" ColumnName="Full_Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Marital_Status" ColumnName="Marital_Status" />
+                <ScalarProperty Name="Date_Birth" ColumnName="Date_Birth" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Team_ID" ColumnName="Team_ID" />
+                <ScalarProperty Name="Member_Type" ColumnName="Member_Type" />
+                <ScalarProperty Name="Card_ID_ON" ColumnName="Card_ID_ON" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Joining_Date" ColumnName="Joining_Date" />
+                <ScalarProperty Name="WhoInsert" ColumnName="WhoInsert" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="ApproveBy" ColumnName="ApproveBy" />
+                <ScalarProperty Name="ApproveDate" ColumnName="ApproveDate" />
+                <ScalarProperty Name="WhoUpdate" ColumnName="WhoUpdate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="WhoDelete" ColumnName="WhoDelete" />
+                <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
+                <ScalarProperty Name="ID_subscription" ColumnName="ID_subscription" />
+                <ScalarProperty Name="subscription_" ColumnName="subscription_" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Page_Info">
+            <EntityTypeMapping TypeName="Club_DatabaseModel1.View_Page_Info">
+              <MappingFragment StoreEntitySet="View_Page_Info">
+                <ScalarProperty Name="Info_ID" ColumnName="Info_ID" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="FileTitle" ColumnName="FileTitle" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Payment_Member">
+            <EntityTypeMapping TypeName="Club_DatabaseModel1.View_Payment_Member">
+              <MappingFragment StoreEntitySet="View_Payment_Member">
+                <ScalarProperty Name="Subscriptions_ID" ColumnName="Subscriptions_ID" />
+                <ScalarProperty Name="Payment_Date" ColumnName="Payment_Date" />
+                <ScalarProperty Name="Subscriptions_Eyare" ColumnName="Subscriptions_Eyare" />
+                <ScalarProperty Name="ID_subscription" ColumnName="ID_subscription" />
+                <ScalarProperty Name="subscription" ColumnName="subscription" />
+                <ScalarProperty Name="PaymentY_N" ColumnName="PaymentY_N" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="WhoInsert" ColumnName="WhoInsert" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="ApproveBy" ColumnName="ApproveBy" />
+                <ScalarProperty Name="ApproveDate" ColumnName="ApproveDate" />
+                <ScalarProperty Name="WhoUpdate" ColumnName="WhoUpdate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="WhoDelete" ColumnName="WhoDelete" />
+                <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
+                <ScalarProperty Name="PaymentReceiptPath" ColumnName="PaymentReceiptPath" />
+                <ScalarProperty Name="Member_ID" ColumnName="Member_ID" />
+                <ScalarProperty Name="Full_Name" ColumnName="Full_Name" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Team_NAME" ColumnName="Team_NAME" />
+                <ScalarProperty Name="Team_ID" ColumnName="Team_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_PaymentTeame">
+            <EntityTypeMapping TypeName="Club_DatabaseModel1.View_PaymentTeame">
+              <MappingFragment StoreEntitySet="View_PaymentTeame">
+                <ScalarProperty Name="Subscriptions_ID" ColumnName="Subscriptions_ID" />
+                <ScalarProperty Name="MemberIdOrTeamId" ColumnName="MemberIdOrTeamId" />
+                <ScalarProperty Name="Payment_Date" ColumnName="Payment_Date" />
+                <ScalarProperty Name="Subscriptions_Eyare" ColumnName="Subscriptions_Eyare" />
+                <ScalarProperty Name="ID_subscription" ColumnName="ID_subscription" />
+                <ScalarProperty Name="subscription" ColumnName="subscription" />
+                <ScalarProperty Name="PaymentY_N" ColumnName="PaymentY_N" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="WhoInsert" ColumnName="WhoInsert" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="ApproveBy" ColumnName="ApproveBy" />
+                <ScalarProperty Name="ApproveDate" ColumnName="ApproveDate" />
+                <ScalarProperty Name="WhoUpdate" ColumnName="WhoUpdate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="WhoDelete" ColumnName="WhoDelete" />
+                <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
+                <ScalarProperty Name="PaymentReceiptPath" ColumnName="PaymentReceiptPath" />
+                <ScalarProperty Name="Team_NAME" ColumnName="Team_NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_SELECMember">
+            <EntityTypeMapping TypeName="Club_DatabaseModel1.View_SELECMember">
+              <MappingFragment StoreEntitySet="View_SELECMember">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Member_ID" ColumnName="Member_ID" />
+                <ScalarProperty Name="Full_Name" ColumnName="Full_Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Marital_Status" ColumnName="Marital_Status" />
+                <ScalarProperty Name="Date_Birth" ColumnName="Date_Birth" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Team_ID" ColumnName="Team_ID" />
+                <ScalarProperty Name="Member_Type" ColumnName="Member_Type" />
+                <ScalarProperty Name="Card_ID_ON" ColumnName="Card_ID_ON" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Joining_Date" ColumnName="Joining_Date" />
+                <ScalarProperty Name="WhoInsert" ColumnName="WhoInsert" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="ApproveBy" ColumnName="ApproveBy" />
+                <ScalarProperty Name="ApproveDate" ColumnName="ApproveDate" />
+                <ScalarProperty Name="WhoUpdate" ColumnName="WhoUpdate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="WhoDelete" ColumnName="WhoDelete" />
+                <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
+                <ScalarProperty Name="ID_subscription" ColumnName="ID_subscription" />
+                <ScalarProperty Name="PicUrl" ColumnName="PicUrl" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_SELECMemberSELERetern">
+            <EntityTypeMapping TypeName="Club_DatabaseModel1.View_SELECMemberSELERetern">
+              <MappingFragment StoreEntitySet="View_SELECMemberSELERetern">
+                <ScalarProperty Name="Member_ID_User" ColumnName="Member_ID_User" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Member_ID" ColumnName="Member_ID" />
+                <ScalarProperty Name="Full_Name" ColumnName="Full_Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Marital_Status" ColumnName="Marital_Status" />
+                <ScalarProperty Name="Date_Birth" ColumnName="Date_Birth" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Team_ID" ColumnName="Team_ID" />
+                <ScalarProperty Name="Member_Type" ColumnName="Member_Type" />
+                <ScalarProperty Name="Card_ID_ON" ColumnName="Card_ID_ON" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Joining_Date" ColumnName="Joining_Date" />
+                <ScalarProperty Name="WhoInsert" ColumnName="WhoInsert" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="ApproveBy" ColumnName="ApproveBy" />
+                <ScalarProperty Name="ApproveDate" ColumnName="ApproveDate" />
+                <ScalarProperty Name="WhoUpdate" ColumnName="WhoUpdate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="WhoDelete" ColumnName="WhoDelete" />
+                <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
+                <ScalarProperty Name="ID_subscription" ColumnName="ID_subscription" />
+                <ScalarProperty Name="PicUrl" ColumnName="PicUrl" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_TeamsApprove">
+            <EntityTypeMapping TypeName="Club_DatabaseModel1.View_TeamsApprove">
+              <MappingFragment StoreEntitySet="View_TeamsApprove">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Team_ID" ColumnName="Team_ID" />
+                <ScalarProperty Name="Team_NAME" ColumnName="Team_NAME" />
+                <ScalarProperty Name="Joining_Date" ColumnName="Joining_Date" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="ID_subscription" ColumnName="ID_subscription" />
+                <ScalarProperty Name="subscription" ColumnName="subscription" />
+                <ScalarProperty Name="Subscription_" ColumnName="Subscription_" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_User_Pages">
+            <EntityTypeMapping TypeName="Club_DatabaseModel1.View_User_Pages">
+              <MappingFragment StoreEntitySet="View_User_Pages">
+                <ScalarProperty Name="Member_ID" ColumnName="Member_ID" />
+                <ScalarProperty Name="Full_Name" ColumnName="Full_Name" />
+                <ScalarProperty Name="Team_ID" ColumnName="Team_ID" />
+                <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+                <ScalarProperty Name="User_Pass" ColumnName="User_Pass" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Team_NAME" ColumnName="Team_NAME" />
+                <ScalarProperty Name="Lock_Account" ColumnName="Lock_Account" />
+                <ScalarProperty Name="InActive" ColumnName="InActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_User_ProfileUser_Pass">
+            <EntityTypeMapping TypeName="Club_DatabaseModel1.View_User_ProfileUser_Pass">
+              <MappingFragment StoreEntitySet="View_User_ProfileUser_Pass">
+                <ScalarProperty Name="Member_ID" ColumnName="Member_ID" />
+                <ScalarProperty Name="Full_Name" ColumnName="Full_Name" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Team_NAME" ColumnName="Team_NAME" />
+                <ScalarProperty Name="User_Pass" ColumnName="User_Pass" />
+                <ScalarProperty Name="Team_ID" ColumnName="Team_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_UserProfile">
+            <EntityTypeMapping TypeName="Club_DatabaseModel1.View_UserProfile">
+              <MappingFragment StoreEntitySet="View_UserProfile">
+                <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+                <ScalarProperty Name="Member_ID" ColumnName="Member_ID" />
+                <ScalarProperty Name="Full_Name" ColumnName="Full_Name" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Team_NAME" ColumnName="Team_NAME" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="User_Pass" ColumnName="User_Pass" />
+                <ScalarProperty Name="Team_ID" ColumnName="Team_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP__Booking_Date" FunctionName="Club_DatabaseModel1.Store.SP__Booking_Date">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Club_DatabaseModel1.SP__Booking_Date_Result">
+                <ScalarProperty Name="Team_NAME" ColumnName="Team_NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Teams_ID" ColumnName="Teams_ID" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Booking_Date" ColumnName="Booking_Date" />
+                <ScalarProperty Name="WhoInsert" ColumnName="WhoInsert" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="ApproveBy" ColumnName="ApproveBy" />
+                <ScalarProperty Name="ApproveDate" ColumnName="ApproveDate" />
+                <ScalarProperty Name="WhoUpdate" ColumnName="WhoUpdate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="WhoDelete" ColumnName="WhoDelete" />
+                <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
+                <ScalarProperty Name="RecordDelete" ColumnName="RecordDelete" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Phone_1" ColumnName="Phone_1" />
+                <ScalarProperty Name="Full_Name" ColumnName="Full_Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Club_DatabaseModel1.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Club_DatabaseModel1.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Club_DatabaseModel1.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Club_DatabaseModel1.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Club_DatabaseModel1.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Club_DatabaseModel1.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Club_DatabaseModel1.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_Master_Member" FunctionName="Club_DatabaseModel1.Store.SP_Master_Member">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Club_DatabaseModel1.SP_Master_Member_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Member_ID" ColumnName="Member_ID" />
+                <ScalarProperty Name="Full_Name" ColumnName="Full_Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Marital_Status" ColumnName="Marital_Status" />
+                <ScalarProperty Name="Date_Birth" ColumnName="Date_Birth" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Team_ID" ColumnName="Team_ID" />
+                <ScalarProperty Name="Member_Type" ColumnName="Member_Type" />
+                <ScalarProperty Name="Card_ID_ON" ColumnName="Card_ID_ON" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Joining_Date" ColumnName="Joining_Date" />
+                <ScalarProperty Name="WhoInsert" ColumnName="WhoInsert" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="ApproveBy" ColumnName="ApproveBy" />
+                <ScalarProperty Name="ApproveDate" ColumnName="ApproveDate" />
+                <ScalarProperty Name="WhoUpdate" ColumnName="WhoUpdate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="WhoDelete" ColumnName="WhoDelete" />
+                <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
+                <ScalarProperty Name="ID_subscription" ColumnName="ID_subscription" />
+                <ScalarProperty Name="PicUrl" ColumnName="PicUrl" />
+                <ScalarProperty Name="ReturnY_N" ColumnName="ReturnY_N" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_New_Team" FunctionName="Club_DatabaseModel1.Store.SP_New_Team">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Club_DatabaseModel1.SP_New_Team_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Team_ID" ColumnName="Team_ID" />
+                <ScalarProperty Name="Team_NAME" ColumnName="Team_NAME" />
+                <ScalarProperty Name="Joining_Date" ColumnName="Joining_Date" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="ID_subscription" ColumnName="ID_subscription" />
+                <ScalarProperty Name="WhoInsert" ColumnName="WhoInsert" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Club_DatabaseModel1.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_sign_in" FunctionName="Club_DatabaseModel1.Store.sp_sign_in">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Club_DatabaseModel1.sp_sign_in_Result">
+                <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+                <ScalarProperty Name="User_Pass" ColumnName="User_Pass" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_Subscriptions" FunctionName="Club_DatabaseModel1.Store.SP_Subscriptions">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Club_DatabaseModel1.SP_Subscriptions_Result">
+                <ScalarProperty Name="Subscriptions_ID" ColumnName="Subscriptions_ID" />
+                <ScalarProperty Name="MemberIdOrTeamId" ColumnName="MemberIdOrTeamId" />
+                <ScalarProperty Name="Payment_Date" ColumnName="Payment_Date" />
+                <ScalarProperty Name="Subscriptions_Eyare" ColumnName="Subscriptions_Eyare" />
+                <ScalarProperty Name="ID_subscription" ColumnName="ID_subscription" />
+                <ScalarProperty Name="subscription" ColumnName="subscription" />
+                <ScalarProperty Name="PaymentY_N" ColumnName="PaymentY_N" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="WhoInsert" ColumnName="WhoInsert" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="ApproveBy" ColumnName="ApproveBy" />
+                <ScalarProperty Name="ApproveDate" ColumnName="ApproveDate" />
+                <ScalarProperty Name="WhoUpdate" ColumnName="WhoUpdate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="WhoDelete" ColumnName="WhoDelete" />
+                <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
+                <ScalarProperty Name="PaymentReceiptPath" ColumnName="PaymentReceiptPath" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Club_DatabaseModel1.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="sp_User_Profile" FunctionName="Club_DatabaseModel1.Store.sp_User_Profile">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Club_DatabaseModel1.sp_User_Profile_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Member_ID" ColumnName="Member_ID" />
+                <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+                <ScalarProperty Name="User_Pass" ColumnName="User_Pass" />
+                <ScalarProperty Name="Lock_Account" ColumnName="Lock_Account" />
+                <ScalarProperty Name="InActive" ColumnName="InActive" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

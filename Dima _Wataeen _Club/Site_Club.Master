@@ -1,0 +1,268 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site_Club.master.cs" Inherits="Dima__Wataeen__Club.Site_Club" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style1 {
+            width: 1485px;
+            border-collapse: collapse;
+            border-color: #FFFFFF;
+            height: 36px;
+        }
+        .auto-style4 {
+            vertical-align: top;
+            margin-top: 0px;
+            background-color: #BDB09F;
+        }
+        .auto-style5 {
+            text-align: left;
+            margin-top:0px;
+            width: 1339px;
+        }
+        
+      
+    .auto-style4 {
+        vertical-align: top;
+    }
+
+html [type=button] {
+  -webkit-appearance: button;
+}
+
+.btn-info {
+  color: #fff;
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+}
+
+  .btn {
+    transition: none;
+  }
+
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+button {
+  -webkit-appearance: button;
+}
+
+button {
+  text-transform: none;
+}
+
+button {
+  overflow: visible;
+    font-weight: 700;
+}
+
+button {
+  font-family: inherit;
+  /*font-size: inherit;*/
+  line-height: inherit;
+    margin-left: 0;
+    margin-right: 0px;
+    }
+
+button {
+  border-radius: 0;
+}
+
+  * {
+    text-shadow: none !important;
+    box-shadow: none !important;
+  }
+  
+
+* {
+  box-sizing: border-box;
+}
+
+        .auto-style10 {
+            vertical-align: top;
+            width: 1435px;
+            margin-top: 0px;
+            background-color: #BDB09F;
+        }
+
+        .auto-style11 {
+            right: -26px;
+            top: 0px;
+            width: 94%;
+            height: 129px;
+            text-align: center;
+        }
+
+        .auto-style12 {
+            width: 1499px;
+        }
+
+        body
+        {
+            font-family: Arial;
+            font-size: 10pt;
+            color: #444;
+        }
+        .main_menu, .main_menu:hover
+        {
+            width: 100px;
+            background-color: #fff;
+            color: #333;
+            text-align: center;
+            height: 30px;
+            line-height: 30px;
+            margin-right: 5px;
+            display: inline-block;
+        }
+        .main_menu:hover
+        {
+            background-color: #ccc;
+        }
+        .level_menu, .level_menu:hover
+        {
+            width: 110px;
+            background-color: #fff;
+            color: #333;
+            text-align: center;
+            height: 30px;
+            line-height: 30px;
+            margin-top: 5px;
+        }
+        .level_menu:hover
+        {
+            background-color: #ccc;
+        }
+        .selected, .selected:hover
+        {
+            background-color: #A6A6A6 !important;
+            color: #fff;
+        }
+        .level2
+        {
+            background-color: #fff;
+        }
+        .auto-style13 {
+            vertical-align: top;
+            width: 153px;
+            margin-top: 0px;
+            background-color: #BDB09F;
+        }
+        .auto-style14 {
+            vertical-align: top;
+            width: 98px;
+            text-align: right;
+            margin-top: 0px;
+            background-color: #BDB09F;
+            text-decoration: underline;
+        }
+        .auto-style15 {
+            width: 147%;
+             background-color: #BDB09F;
+        }
+        .auto-style16 {
+            width: 149px;
+        }
+        .auto-style17 {
+            font-size: x-large;
+            width: 46px;
+        }
+        .auto-style18 {
+            font-size: x-large;
+            width: 42px;
+        }
+    </style>
+</head>
+<body style="background-color:#bdb09f;margin-top:0px;margin-left:0px;margin-right:0px; height: 196px; width: 1499px;">
+    <form id="form1" runat="server" class="auto-style12">
+
+        <div class="auto-style11" id="bar">
+                          
+
+
+        <asp:Image ID="Image1" runat="server" ImageUrl="~/img/club_Heder11.png" Height="111px" Width="1497px" />
+             
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;<strong><asp:Label ID="LabelFull_Nmae" runat="server" CssClass="auto-style9" style="color: #990033; font-size: x-large"></asp:Label>
+                                &nbsp;&nbsp;&nbsp; <asp:Label ID="LabelPagesTeamName" runat="server" CssClass="auto-style9" style="color: #990033; font-size: x-large"></asp:Label>
+                                </strong>&nbsp;&nbsp;<strong><asp:Label ID="LabelUser_Name" runat="server" CssClass="auto-style9" style="color: #990033; font-size: x-large" Visible="False"></asp:Label>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <asp:Label ID="LabelTeam_ID" runat="server" CssClass="auto-style9" style="color: #990033; font-size: x-large" Visible="False"></asp:Label>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;
+             
+            </div>
+  
+
+        <strong>
+                                <br />
+                                </strong>
+        <table align="left" class="auto-style1" dir="ltr">
+            <tr>
+                <td aria-sort="none" class="auto-style13" onload="positionElementAtTop()" >
+                    <strong>
+                    <table class="auto-style15">
+                        <tr>
+                            <td class="auto-style16">
+                    <strong>
+                   <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal" CssClass="auto-style14" BackColor="#FFFBD6" DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="X-Small" ForeColor="#990000" StaticSubMenuIndent="10px" style="background-color: #BDB09F">
+                       <DynamicHoverStyle BackColor="#990000" ForeColor="White" />
+                       <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                       <DynamicMenuStyle BackColor="#FFFBD6" />
+                       <DynamicSelectedStyle BackColor="#FFCC66" />
+    <LevelMenuItemStyles>
+        <asp:MenuItemStyle CssClass="main_menu" />
+        <asp:MenuItemStyle CssClass="level_menu" />
+    </LevelMenuItemStyles>
+                       <StaticHoverStyle BackColor="#990000" ForeColor="White" />
+                       <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+    <StaticSelectedStyle CssClass="selected" BackColor="#BDB09F" />
+                       <StaticItemTemplate>
+                           <%# Eval("Text") %>
+                       </StaticItemTemplate>
+</asp:Menu>
+                    </strong>
+                            </td>
+                            <td class="auto-style17">&nbsp;</td>
+                            <td class="auto-style18">&nbsp;</td>
+                        </tr>
+                    </table>
+                    </strong>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </td>
+                <td aria-sort="none" class="auto-style10" onload="positionElementAtTop()" >
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        <div class="auto-style5">
+                        </div>
+                    </asp:ContentPlaceHolder>
+                </td>
+                <td aria-sort="none" class="auto-style4" onload="positionElementAtTop()" >
+                    &nbsp;</td>
+            </tr>
+        </table>
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a79db755673a44e4ac7a14b796bd8ad8" Name="Diagram1">
+        <EntityTypeShape EntityType="Club_DatabaseModel.Table_Booking_Details" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Club_DatabaseModel.Table_Contests" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Club_DatabaseModel.Table_Expenses" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Club_DatabaseModel.Table_Master_Member" Width="1.5" PointX="2.625" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="Club_DatabaseModel.Table_Member_Details" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Club_DatabaseModel.Table_Teams" Width="1.5" PointX="4.625" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="Club_DatabaseModel.Table_User_Pages" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Club_DatabaseModel.Table_User_Profile" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Club_DatabaseModel.Table_User_Teams" Width="1.5" PointX="4.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Club_DatabaseModel.Table_History_Contests" Width="1.5" PointX="6.75" PointY="7.75" IsExpanded="true" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
